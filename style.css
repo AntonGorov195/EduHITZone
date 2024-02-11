@@ -1,4 +1,6 @@
 .logo {
+	background-color: rgba(240, 248, 255, 0.651);
+	border-radius: 9px;
 	padding: 3px;
 	scale: 100%;
 	transition-duration: 0.5s;
