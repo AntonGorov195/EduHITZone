@@ -1,0 +1,22 @@
+h1 {
+    direction: rtl;
+}
+.name {
+	font-size: 4em;
+    text-decoration: underline;
+}
+header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.yes-or-no {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.yes-or-no button{
+    min-width: 50px;
+    font-size: large;
+    margin: auto;
+}
