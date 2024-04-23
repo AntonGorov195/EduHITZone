@@ -42,19 +42,19 @@ body {
 	filter: contrast(130%) hue-rotate(70deg);
 }
 .login-guest {
-	background-image: url("אורח.png");
+	background-image: url("assets/אורח.png");
 	height: 150px;
 	width: 250px;
 }
 
 .create-account {
-	background-image: url("משתמש חדש.png");
+	background-image: url("assets/משתמש חדש.png");
 	height: 150px;
 	width: 750px;
 }
 
 .login {
-	background-image: url("משתמש קיים.png");
+	background-image: url("assets/משתמש קיים.png");
 	height: 150px;
 	width: 750px;
 }
