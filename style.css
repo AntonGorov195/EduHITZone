@@ -1,8 +1,9 @@
+* {
+	font-family: Poeti, sans-serif;
+}
 .logo {
-	background-color: rgba(240, 248, 255, 0.651);
 	border-radius: 9px;
 	padding: 3px;
-	scale: 100%;
 	transition-duration: 0.5s;
 }
 .logo:hover {
@@ -10,57 +11,68 @@
 	scale: 101%;
 }
 header {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
 }
 main {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	margin-top: 100px;
+	flex: 1;
+}
+body {
+	display: flex;
+	flex-direction: column;
+}
+header {
+	background-color: #251f4e;
+	text-align: center;
+	padding: 20px;
+	width: 100%;
+}
+h1 {
+	color: white;
+	transition-duration: 0.5s;
+}
+h1:hover {
+	color: #087a81;
+}
+.login-guest {
+}
+
+.create-account {
+}
+
+.login {
+}
+
+.btn-container {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	margin-top: 100px;
 }
-body {
-	background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-		url("./background.jpg");
-	background-size: cover;
+.enter-btn {
+	width: fit-content;
+	background-color: #251f4e;
+	text-align: center;
+	margin: 10px;
+	box-shadow: 0px 4px 11px 1px rgb(0 0 0 / 50%);
+	transition-duration: 0.4s;
 }
-.page-header-1 {
-	filter: contrast(50%) grayscale(100%) brightness(120%);
-	width: 500px;
-	margin-bottom: 13px;
-	margin-top: 10px;
+.enter-btn a {
+	padding: 10px;
+	display: inline-block;
+	font-size: large;
+	color: white;
+	text-decoration: none;
 }
-.paper-btn {
-	background-color: rgba(0, 0, 0, 0);
-	background-repeat: no-repeat;
-	background-size: contain;
-	background-position: center center;
-	border-style: none;
-	transition-duration: 0.3s;
-	filter: contrast(130%) hue-rotate(70deg);
+.enter-btn:hover {
+	margin: 15px;
+	scale: 110%;
 }
-.login-guest {
-	background-image: url("assets/אורח.png");
-	height: 150px;
-	width: 250px;
-}
-
-.create-account {
-	background-image: url("assets/משתמש חדש.png");
-	height: 150px;
-	width: 750px;
-}
-
-.login {
-	background-image: url("assets/משתמש קיים.png");
-	height: 150px;
-	width: 750px;
-}
-
-.paper-btn:hover {
-	background-color: rgba(0, 0, 0, 0.4);
-	margin: 20px;
-	filter: contrast(100%);
+footer {
+	background-color: #251f4e;
+	padding: 20px;
+	color: white;
+	text-align: center;
 }

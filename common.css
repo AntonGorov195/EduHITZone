@@ -3,9 +3,12 @@
     --color-background-btn:rgb(194, 218, 255);
     --color-background-btn-hover:rgb(116, 172, 111);
 }
-
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
 body,html {
 	min-height: 100vh;
 	margin: 0;
-	background: linear-gradient(rgb(116, 214, 214),rgb(192, 192, 255));
 }
