@@ -37,7 +37,7 @@ body {
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: center center;
-	border-style: double;
+	border-style: none;
 	transition-duration: 0.3s;
 	filter: contrast(130%) hue-rotate(70deg);
 }
