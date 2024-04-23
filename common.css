@@ -1,7 +1,8 @@
 /* reusable colors */
 :root{
-    --color-background-btn:rgb(194, 218, 255);
-    --color-background-btn-hover:rgb(116, 172, 111);
+	--color-bg:#1f354e;
+	--color-bg-low-alpha:#1f354e7f;
+	--color-bg-soft:#e5f1ff;
 }
 * {
 	margin: 0;
