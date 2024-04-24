@@ -18,24 +18,12 @@
 .logo.loaded {
 	opacity: 1;
 }
-header {
-}
-
-main {
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-	padding-top: 100px;
-	flex: 1;
-	background-color: var(--color-bg-soft);
-}
 body {
 	display: flex;
 	flex-direction: column;
 }
 
 header {
-	background-color: var(--color-bg);
 	text-align: center;
 	padding: 20px;
 	width: 100%;
@@ -49,7 +37,6 @@ header {
 	}
 }
 h1 {
-	color: white;
 	transition-duration: 0.5s;
 	width: fit-content;
 	margin: auto;
@@ -58,6 +45,16 @@ h1 {
 h1:hover {
 	color: #087a81;
 }
+
+main {
+	padding-top: 100px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	flex: 1;
+	background-color: var(--color-bg-soft);
+}
+
 .login-guest {
 }
 
@@ -85,34 +82,25 @@ h1:hover {
 	flex-direction: column;
 	animation: 0.5s ease-out 0s btnContainerLoadAnim;
 	padding: 6px;
+	border-radius: 3px;
 }
 .enter-btn {
 	width: fit-content;
-	background-color: var(--color-bg);
 	text-align: center;
 	margin: 10px;
-	box-shadow: 0px 4px 11px 1px rgba(0, 0, 0, 0.664);
-	transition-duration: 0.4s;
-}
-
-.enter-btn a {
-	padding: 10px;
-	display: inline-block;
-	font-size: large;
-	color: white;
-	text-decoration: none;
-}
-.enter-btn a:focus {
-	color: rgb(255, 201, 85);
 	transition-duration: 0.4s;
 }
 .enter-btn:hover {
 	margin: 15px;
 	scale: 110%;
 }
+.enter-btn a {
+	padding: 10px;
+	display: inline-block;
+	font-size: large;
+	text-decoration: none;
+}
 footer {
-	background-color: var(--color-bg);
 	padding: 20px;
-	color: white;
 	text-align: center;
 }

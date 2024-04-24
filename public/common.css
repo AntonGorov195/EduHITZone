@@ -1,0 +1,38 @@
+/* reusable colors */
+:root {
+	--color-bg: #1f354e;
+	--color-bg-low-alpha: #1f354e7f;
+	--color-bg-soft: #e5f1ff;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body,
+html {
+	background-color: var(--color-bg-soft);
+	min-height: 100vh;
+	margin: 0;
+}
+.drop-box-shadow {
+	box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.6);
+	z-index: 1;
+}
+.panel-front {
+	background-color: var(--color-bg);
+	color: white;
+}
+
+a {
+	color: white;
+}
+
+a:hover {
+	color: rgb(194, 198, 255);
+}
+
+a:active {
+	color: rgb(255, 221, 193);
+}

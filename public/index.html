@@ -8,34 +8,36 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='common.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
-    <script defer src='main.js'></script>
+    <script defer src='homePage.js'></script>
 </head>
 
 <body>
-    <header>
+    <header class="drop-box-shadow panel-front">
         <a href="https://www.hit.ac.il">
-            <img class="logo" src="https://www.hit.ac.il/sites/projects/hit/views/he/images/hit_logo.svg" onload="this.classList.add('loaded')">
+            <img class="logo" src="https://www.hit.ac.il/sites/projects/hit/views/he/images/hit_logo.svg"
+                onload="this.classList.add('loaded')">
         </a>
         <h1>
             EduHITZone
         </h1>
     </header>
     <main id="page-content">
-        <div class="btn-container">
-            <div class="enter-btn login" href="login/login.html">
+        <nav class="btn-container">
+            <div class="login enter-btn drop-box-shadow panel-front">
                 <a href="login/login.html">כניסה</a>
             </div>
-            <div class="enter-btn login-guest" href="login/login.html">
-                <a href="login/login.html">כניסה בתור אורח</a>
+            <div class="login-guest enter-btn drop-box-shadow panel-front">
+                <a href="./contentPage/content.html?user=guest">כניסה בתור אורח</a>
             </div>
-            <div class="enter-btn create-account">
+            <div class="create-account enter-btn drop-box-shadow panel-front">
                 <a href="login/login.html">יצירת משתמש</a>
             </div>
-        </div>
+        </nav>
     </main>
-    <footer>
+    <footer class="panel-front">
         Hello there!
     </footer>
 </body>
 <script src="main.js"></script>
+
 </html>

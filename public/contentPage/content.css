@@ -1,0 +1,60 @@
+body {
+	display: flex;
+	flex-direction: column;
+	direction: rtl;
+}
+header {
+	padding: 5px;
+}
+
+@keyframes waveAnim {
+	0% {
+		transform: translateX(3px);
+	}
+	100% {
+		transform: translateX(-3px);
+	}
+}
+h1 {
+	text-align: center;
+	padding: 12px;
+	width: fit-content;
+	margin: auto;
+
+	animation-name: waveAnim;
+	animation-duration: 1.5s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-timing-function: ease-in-out;
+}
+main {
+	padding-top: 20px;
+	flex: 1;
+	background-color: var(--color-bg-soft);
+}
+.course-list {
+	padding: 20px;
+	list-style: none;
+	display: flex;
+	overflow: auto;
+}
+.course-preview-item {
+	margin: 20px;
+	padding: 30px;
+	transition-duration: 0.4s;
+}
+.course-list li:hover {
+	margin: 30px;
+	scale: 110%;
+}
+.course-preview {
+	display: inline-flex;
+	flex-direction: column;
+	color: white;
+}
+.course-preview img {
+	height: 200px;
+}
+.course-group-container {
+	padding-inline-start: 30px;
+}
