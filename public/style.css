@@ -1,6 +1,5 @@
-* {
-	font-family: Poeti, sans-serif;
-}
+
+/* HIT logo at the top of the page. */
 .logo {
 	border-radius: 9px;
 	padding: 7px;
@@ -11,23 +10,25 @@
 	transition-timing-function: ease-out;
 	opacity: 0;
 }
+/* A subtle animation when hovering on the logo. */
 .logo:hover {
-	/* padding: 10px; */
 	scale: 101%;
 }
+/* 
+	To mask the logo loading. 
+ 	The loaded class is (should be) added upon onload event is triggered on the img element.
+*/
 .logo.loaded {
 	opacity: 1;
 }
-body {
-	display: flex;
-	flex-direction: column;
-}
 
 header {
-	text-align: center;
 	padding: 20px;
-	width: 100%;
 }
+/* 
+	A small animation of the header fading in.
+	Used to test how animations work, feel free to remove.
+*/
 @keyframes h1LoadAnim {
 	0% {
 		opacity: 0;
@@ -42,28 +43,24 @@ h1 {
 	margin: auto;
 	animation: 2s ease-out 0s h1LoadAnim;
 }
+/* 
+	Changes the color when hovering the heading.
+	Used for testing, feel free to remove.
+*/
 h1:hover {
 	color: #087a81;
 }
 
 main {
-	padding-top: 100px;
+	margin-top: 100px;
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	flex: 1;
-	background-color: var(--color-bg-soft);
 }
-
-.login-guest {
-}
-
-.create-account {
-}
-
-.login {
-}
-
+/* 
+	Plays an animation of the buttons fading in and sliding down.
+	Used for testing, feel free to remove.
+*/
 @keyframes btnContainerLoadAnim {
 	0% {
 		opacity: 0;
@@ -89,6 +86,7 @@ main {
 	text-align: center;
 	margin: 10px;
 	transition-duration: 0.4s;
+	background-color: var(--color-bg);
 }
 .enter-btn:hover {
 	margin: 15px;
@@ -98,9 +96,7 @@ main {
 	padding: 10px;
 	display: inline-block;
 	font-size: large;
-	text-decoration: none;
 }
 footer {
 	padding: 20px;
-	text-align: center;
 }

@@ -9,30 +9,51 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-family: Poeti, sans-serif;
 }
 body,
 html {
+	direction: rtl;
+	display: flex;
+	flex-direction: column;
 	background-color: var(--color-bg-soft);
 	min-height: 100vh;
 	margin: 0;
 }
+
 .drop-box-shadow {
 	box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.6);
+	/* 
+	The z-index is there because without it the headers shadow would be covered by the next element.
+	*/
 	z-index: 1;
 }
-.panel-front {
-	background-color: var(--color-bg);
-	color: white;
-}
-
+/* 
+	Default style for different various elements.
+	Might regret this later, but might also be thankful.
+*/
 a {
 	color: white;
+	text-decoration: none;
 }
-
 a:hover {
 	color: rgb(194, 198, 255);
 }
-
 a:active {
 	color: rgb(255, 221, 193);
+}
+
+header {
+	text-align: center;
+	background-color: var(--color-bg);
+	color: white;
+}
+main {
+	flex: 1;
+	background-color: var(--color-bg-soft);
+}
+footer {
+	text-align: center;
+	background-color: var(--color-bg);
+	color: white;
 }

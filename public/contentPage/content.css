@@ -1,7 +1,6 @@
 body {
 	display: flex;
 	flex-direction: column;
-	direction: rtl;
 }
 header {
 	padding: 5px;
@@ -29,8 +28,6 @@ h1 {
 }
 main {
 	padding-top: 20px;
-	flex: 1;
-	background-color: var(--color-bg-soft);
 }
 .course-list {
 	padding: 20px;
@@ -38,12 +35,14 @@ main {
 	display: flex;
 	overflow: auto;
 }
+
 .course-preview-item {
 	margin: 20px;
 	padding: 30px;
 	transition-duration: 0.4s;
+	background-color: var(--color-bg);
 }
-.course-list li:hover {
+.course-preview-item:hover {
 	margin: 30px;
 	scale: 110%;
 }
@@ -52,8 +51,8 @@ main {
 	flex-direction: column;
 	color: white;
 }
-.course-preview img {
-	height: 200px;
+.course-preview-image {
+	max-height: 200px;
 }
 .course-group-container {
 	padding-inline-start: 30px;
