@@ -9,17 +9,11 @@
 	transition-duration: 0.5s;
 	transition-timing-function: ease-out;
 	opacity: 0;
+	transform: scale(0);
 }
 /* A subtle animation when hovering on the logo. */
 .logo:hover {
 	scale: 101%;
-}
-/* 
-	To mask the logo loading. 
- 	The loaded class is (should be) added upon onload event is triggered on the img element.
-*/
-.logo.loaded {
-	opacity: 1;
 }
 
 header {
@@ -100,3 +94,4 @@ main {
 footer {
 	padding: 20px;
 }
+

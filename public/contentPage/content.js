@@ -21,18 +21,64 @@ const coursesGroups = [
 	},
 ];
 
-// const courseGroupContainer = document.getElementById("course-group-container");
-// 
-// coursesGroups.forEach((courseGroup) => {
-// 	_ = createAndAppend(courseGroupContainer, "h2", {
-// 		textContent: courseGroup.courseGroupName,
-// 	});
-// 	const courseList = createAndAppend(courseGroupContainer, "ul", {
-// 		classList: ["course-list"],
-// 	});
-//     courseGroup.courses.forEach((course) => {
-//         const item = createAndAppend(courseList,)
-//     });
-// });
-// 
-// function createAndAppend() {}
+/* <h2>מתמטיקה</h2>
+<ul class="course-list">
+	<li class="course-preview-item drop-box-shadow">
+		<a class="course-preview"
+			href="https://he.wikipedia.org/wiki/%D7%90%D7%99%D7%A0%D7%98%D7%92%D7%A8%D7%9C">
+			<img class="course-preview-image"
+				src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Integral_example.svg/300px-Integral_example.svg.png">
+			<div>
+				אינפי 2
+			</div>
+		</a>
+	</li>
+</ul> */
+
+const courseGroupContainer = document.getElementById("course-group-container");
+
+coursesGroups.forEach((courseGroup) => {
+	_ = createAndAppend(courseGroupContainer, "h2", {
+		textContent: courseGroup.courseGroupName,
+	});
+	const courseList = createAndAppend(courseGroupContainer, "ul", {
+		classList: ["course-list"],
+	});
+	courseGroup.courses.forEach((course) => {
+		const item = createAndAppend(courseList, "li", {
+			classList: ["course-preview-item drop-box-shadow"],
+		});
+		const a = createAndAppend(item, "a", {
+			classList: "course-preview",
+			href: course.href,
+		});
+		const img = createAndAppend(a, "img", {
+			classList: "course-preview-image",
+			onload: function () {
+				img.classList.add("loaded");
+			},
+			src: course.thumbnail,
+		});
+		_ = createAndAppend(a, "div", { textContent: course.name });
+	});
+});
+/**
+ *
+ * @param {HTMLElement} parent
+ * @param {string} tagName
+ * @param {any | undefined} props
+ * @returns {HTMLElement}
+ */
+function createAndAppend(parent, tagName, props) {
+	const newElem = document.createElement(tagName);
+
+	if (props !== undefined) {
+		for (const [key, value] of Object.entries(props)) {
+			if (newElem[key] !== value) {
+				newElem[key] = value;
+			}
+		}
+	}
+	parent.appendChild(newElem);
+	return newElem;
+}

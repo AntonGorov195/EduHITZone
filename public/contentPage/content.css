@@ -57,3 +57,17 @@ main {
 .course-group-container {
 	padding-inline-start: 30px;
 }
+
+img {
+	opacity: 0;
+	transition-duration: 0.3s;
+	transition-timing-function: ease;
+}
+/* 
+	The loaded class is (should be) added upon onload event is triggered on the img element. Like this:
+	 <img onload="this.classList.add('loaded')">
+*/
+img.loaded {
+	opacity: 1;
+	/* transform: scale(1); */
+}

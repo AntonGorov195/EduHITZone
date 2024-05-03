@@ -57,3 +57,11 @@ footer {
 	background-color: var(--color-bg);
 	color: white;
 }
+
+/* 
+	The loaded class is (should be) added upon onload event is triggered on the img element. Like this:
+	 <img onload="this.classList.add('loaded')">
+*/
+img.loaded {
+	opacity: 1;
+}
