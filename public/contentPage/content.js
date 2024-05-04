@@ -7,19 +7,19 @@
 //     console.error("Getting user's name is not implemented.");
 // }
 
-const coursesGroups = [
-	{
-		courseGroupName: "Popular",
-		courses: [
-			{
-				name: "intro to C",
-				thumbnail:
-					"https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/C_Programming_Language.svg/380px-C_Programming_Language.svg.png?20201031132917",
-				href: "https://he.wikipedia.org/wiki/C_(%D7%A9%D7%A4%D7%AA_%D7%AA%D7%9B%D7%A0%D7%95%D7%AA)",
-			},
-		],
-	},
-];
+// const coursesGroups = [
+// 	{
+// 		courseGroupName: "Popular",
+// 		courses: [
+// 			{
+// 				name: "intro to C",
+// 				thumbnail:
+// 					"https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/C_Programming_Language.svg/380px-C_Programming_Language.svg.png?20201031132917",
+// 				href: "https://he.wikipedia.org/wiki/C_(%D7%A9%D7%A4%D7%AA_%D7%AA%D7%9B%D7%A0%D7%95%D7%AA)",
+// 			},
+// 		],
+// 	},
+// ];
 
 /* <h2>מתמטיקה</h2>
 <ul class="course-list">
@@ -35,50 +35,50 @@ const coursesGroups = [
 	</li>
 </ul> */
 
-const courseGroupContainer = document.getElementById("course-group-container");
-
-coursesGroups.forEach((courseGroup) => {
-	_ = createAndAppend(courseGroupContainer, "h2", {
-		textContent: courseGroup.courseGroupName,
-	});
-	const courseList = createAndAppend(courseGroupContainer, "ul", {
-		classList: ["course-list"],
-	});
-	courseGroup.courses.forEach((course) => {
-		const item = createAndAppend(courseList, "li", {
-			classList: ["course-preview-item drop-box-shadow"],
-		});
-		const a = createAndAppend(item, "a", {
-			classList: "course-preview",
-			href: course.href,
-		});
-		const img = createAndAppend(a, "img", {
-			classList: "course-preview-image",
-			onload: function () {
-				img.classList.add("loaded");
-			},
-			src: course.thumbnail,
-		});
-		_ = createAndAppend(a, "div", { textContent: course.name });
-	});
-});
-/**
- *
- * @param {HTMLElement} parent
- * @param {string} tagName
- * @param {any | undefined} props
- * @returns {HTMLElement}
- */
-function createAndAppend(parent, tagName, props) {
-	const newElem = document.createElement(tagName);
-
-	if (props !== undefined) {
-		for (const [key, value] of Object.entries(props)) {
-			if (newElem[key] !== value) {
-				newElem[key] = value;
-			}
-		}
-	}
-	parent.appendChild(newElem);
-	return newElem;
-}
+// const courseGroupContainer = document.getElementById("course-group-container");
+// 
+// coursesGroups.forEach((courseGroup) => {
+// 	_ = createAndAppend(courseGroupContainer, "h2", {
+// 		textContent: courseGroup.courseGroupName,
+// 	});
+// 	const courseList = createAndAppend(courseGroupContainer, "ul", {
+// 		classList: ["course-list"],
+// 	});
+// 	courseGroup.courses.forEach((course) => {
+// 		const item = createAndAppend(courseList, "li", {
+// 			classList: ["course-preview-item drop-box-shadow"],
+// 		});
+// 		const a = createAndAppend(item, "a", {
+// 			classList: "course-preview",
+// 			href: course.href,
+// 		});
+// 		const img = createAndAppend(a, "img", {
+// 			classList: "course-preview-image",
+// 			onload: function () {
+// 				img.classList.add("loaded");
+// 			},
+// 			src: course.thumbnail,
+// 		});
+// 		_ = createAndAppend(a, "div", { textContent: course.name });
+// 	});
+// });
+// /**
+//  *
+//  * @param {HTMLElement} parent
+//  * @param {string} tagName
+//  * @param {any | undefined} props
+//  * @returns {HTMLElement}
+//  */
+// function createAndAppend(parent, tagName, props) {
+// 	const newElem = document.createElement(tagName);
+// 
+// 	if (props !== undefined) {
+// 		for (const [key, value] of Object.entries(props)) {
+// 			if (newElem[key] !== value) {
+// 				newElem[key] = value;
+// 			}
+// 		}
+// 	}
+// 	parent.appendChild(newElem);
+// 	return newElem;
+// }

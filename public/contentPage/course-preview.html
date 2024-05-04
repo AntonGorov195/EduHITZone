@@ -1,0 +1,10 @@
+{{ range .Courses }}
+<li class="course-preview-item drop-box-shadow">
+    <a class="course-preview" href="{{ .Href }}">
+        <img class="course-preview-image" src="{{ .Thumbnail }}" onload="this.classList.add('loaded')">
+        <div>
+            {{ .Name }}
+        </div>
+    </a>
+</li>
+{{ end }}
