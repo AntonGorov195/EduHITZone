@@ -60,7 +60,7 @@ main {
 
 img {
 	opacity: 0;
-	transition-duration: 0.3s;
+	transition-duration: 1s;
 	transition-timing-function: ease;
 }
 /* 
