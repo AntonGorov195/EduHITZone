@@ -5,12 +5,19 @@
 	--color-bg-soft: #e5f1ff;
 }
 
+/* Shared values */
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 	font-family: Poeti, sans-serif;
 }
+
+/* 
+	Default element styles
+	Default style for different various elements.
+	Might regret this later, but might also be thankful.
+*/
 body,
 html {
 	direction: rtl;
@@ -21,17 +28,34 @@ html {
 	margin: 0;
 }
 
-.drop-box-shadow {
-	box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.6);
-	/* 
-	The z-index is there because without it the headers shadow would be covered by the next element.
-	*/
-	z-index: 1;
+header {
+	text-align: center;
+	background-color: var(--color-bg);
+	color: white;
+	padding: 20px;
 }
-/* 
-	Default style for different various elements.
-	Might regret this later, but might also be thankful.
-*/
+header {
+	padding: 20px;
+}
+h1 {
+	width: fit-content;
+	margin: auto;
+}
+main {
+	flex: 1;
+	background-color: var(--color-bg-soft);
+	justify-content: center;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+footer {
+	text-align: center;
+	background-color: var(--color-bg);
+	color: white;
+	padding: 20px;
+}
+
 a {
 	color: white;
 	text-decoration: none;
@@ -42,29 +66,21 @@ a:hover {
 a:active {
 	color: rgb(255, 221, 193);
 }
-
-header {
-	text-align: center;
-	background-color: var(--color-bg);
-	color: white;
-}
-main {
-	flex: 1;
+input {
 	background-color: var(--color-bg-soft);
 }
-footer {
-	text-align: center;
-	background-color: var(--color-bg);
-	color: white;
+button {
+	background-color: var(--color-bg-soft);
+}
+input:focus {
+	background-color: rgb(255, 221, 193);
+}
+button:active {
+	background-color: rgb(255, 221, 193);
 }
 
-/* 
-	The loaded class is (should be) added upon onload event is triggered on the img element. Like this:
-	 <img onload="this.classList.add('loaded')">
-*/
-/* img.loaded {
-	opacity: 1;
-} */
+/* Classes */
+
 /* HIT logo at the top of the page. */
 .logo {
 	border-radius: 9px;
@@ -79,19 +95,27 @@ footer {
 .logo:hover {
 	scale: 101%;
 }
-h1 {
-	transition-duration: 0.5s;
+/* An important button, such the ones in index.HTML */
+.btn-main {
 	width: fit-content;
-	margin: auto;
-	animation: 2s ease-out 0s h1LoadAnim;
+	text-align: center;
+	margin: 10px;
+	transition-duration: 0.4s;
+	background-color: var(--color-bg);
+	padding: 10px;
+	font-size: large;
 }
-/* 
-	Changes the color when hovering the heading.
-	Used for testing, feel free to remove.
-*/
-h1:hover {
-	color: #087a81;
+.btn-main:hover {
+	margin: 15px;
+	scale: 110%;
+	font-size: larger;
 }
-header {
-	padding: 20px;
+
+/* Add a small shadow under an element */
+.drop-box-shadow {
+	box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.6);
+	/* 
+	The z-index is there because without it the headers shadow would be covered by the next element.
+	*/
+	z-index: 1;
 }

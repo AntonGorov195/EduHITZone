@@ -9,14 +9,8 @@
 	transition-duration: 0.5s;
 	transition-timing-function: ease-out;
 }
-/* A subtle animation when hovering on the logo. */
-.logo:hover {
-	scale: 101%;
-}
 
-header {
-	padding: 20px;
-}
+
 /* 
 	A small animation of the header fading in.
 	Used to test how animations work, feel free to remove.
@@ -35,6 +29,7 @@ h1 {
 	margin: auto;
 	animation: 2s ease-out 0s h1LoadAnim;
 }
+
 /* 
 	Changes the color when hovering the heading.
 	Used for testing, feel free to remove.
@@ -42,12 +37,8 @@ h1 {
 h1:hover {
 	color: #087a81;
 }
-
 main {
-	margin-top: 100px;
-	display: flex;
-	align-items: center;
-	flex-direction: column;
+	margin-bottom:100px;
 }
 /* 
 	Plays an animation of the buttons fading in and sliding down.
@@ -72,22 +63,6 @@ main {
 	animation: 0.5s ease-out 0s btnContainerLoadAnim;
 	padding: 6px;
 	border-radius: 3px;
-}
-.enter-btn {
-	width: fit-content;
-	text-align: center;
-	margin: 10px;
-	transition-duration: 0.4s;
-	background-color: var(--color-bg);
-}
-.enter-btn:hover {
-	margin: 15px;
-	scale: 110%;
-}
-.enter-btn a {
-	padding: 10px;
-	display: inline-block;
-	font-size: large;
 }
 footer {
 	padding: 20px;
