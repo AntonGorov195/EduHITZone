@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="he">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title> EdiHITZone [ Page Name ]</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../common.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='login.css'>
+    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+</head>
+
+<body>
+
+    <header class="drop-box-shadow">
+        <a href="https://www.hit.ac.il">
+            <img class="logo" src="https://www.hit.ac.il/sites/projects/hit/views/he/images/hit_logo.svg">
+        </a>
+        <h1>
+            EduHITZone
+        </h1>
+    </header>
+    <main id="page-content">
+        <form hx-target="#error-msg" hx-post="/tmp/1">
+            <label>שם משתמש:</label> <input type="text" name="name">
+            <label>סיסמה:</label> <input type="password" name="password">
+            <button>כניסה</button>
+            <!-- <button>יצירת משתמש</button> -->
+            <span id="error-msg"></span>
+        </form>
+        <div id="count">0</div>
+        <script>
+            const count = document.getElementById("count")
+            const f = function () {
+                count.innerText = 1 + + count.innerText;
+                requestAnimationFrame(f)
+            }
+            requestAnimationFrame(f)
+        </script>
+    </main>
+    <footer>
+        <div><span> © כל הזכויות שמורות ל HIT מכון טכנולוגי
+                חולון</span><span style="margin-right:50px;"> בניית אתרים AO</span></div>
+    </footer>
+</body>
+
+</html>

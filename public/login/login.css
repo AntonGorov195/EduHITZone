@@ -1,0 +1,16 @@
+body {
+    /* justify-content: center; */
+}
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+form {
+    background-color: var(--color-bg-low-alpha);
+    display: flex;
+    align-items: center;
+    margin: auto;
+    flex-direction: column;
+    padding: 30px;
+}
