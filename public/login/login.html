@@ -22,12 +22,12 @@
         </h1>
     </header>
     <main id="page-content">
-        <form hx-target="#error-msg" hx-post="/tmp/1">
+        <form hx-target="#error-msg" hx-post="/api/v1/login/form" hx-swap="outerHTML">
             <label>שם משתמש:</label> <input type="text" name="name">
             <label>סיסמה:</label> <input type="password" name="password">
             <button class="enter-btn">כניסה</button>
             <!-- <button>יצירת משתמש</button> -->
-            <span id="error-msg"></span>
+            <span id="{{ .ErrId }}"></span>
         </form>
     </main>
     <footer>
