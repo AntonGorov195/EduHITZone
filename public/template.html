@@ -1,13 +1,18 @@
-<!DOCTYPE html>
+{{ block "primary-v1" . }}
+
+<!DOCTYPE html lang="he">
 <html>
+
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title> EdiHITZone [ Page Name ]</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='{{ .PathCommon }}/common.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='{{ .PathCss }}.css'>
+    {{ range .HeadEx }}
+    {{ . }}
+    {{ end }}
+    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
 </head>
+
 <body>
     <header class="drop-box-shadow">
         <a href="https://www.hit.ac.il">
@@ -17,10 +22,22 @@
             EduHITZone
         </h1>
     </header>
-    <main id="page-content"> 
+    <main id="page-main">
         {{ .Main }}
     </main>
     <footer>
+        <div><span> © כל הזכויות שמורות ל HIT מכון טכנולוגי
+                חולון</span><span style="margin-right:50px;"> בניית אתרים AO</span></div>
     </footer>
 </body>
+
 </html>
+{{ end }}
+
+{{ block "css" . }}
+<link rel='stylesheet' type='text/css' media='screen' href='{{ . }}'>
+{{ end }}
+
+{{ block "title" . }}
+    <title> {{ . }} </title>
+{{ end }}

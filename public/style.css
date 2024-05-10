@@ -10,33 +10,6 @@
 	transition-timing-function: ease-out;
 }
 
-
-/* 
-	A small animation of the header fading in.
-	Used to test how animations work, feel free to remove.
-*/
-@keyframes h1LoadAnim {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
-}
-h1 {
-	transition-duration: 0.5s;
-	width: fit-content;
-	margin: auto;
-	animation: 2s ease-out 0s h1LoadAnim;
-}
-
-/* 
-	Changes the color when hovering the heading.
-	Used for testing, feel free to remove.
-*/
-h1:hover {
-	color: #087a81;
-}
 main {
 	margin-bottom:100px;
 }

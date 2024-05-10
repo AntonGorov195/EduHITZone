@@ -1,14 +1,15 @@
 package main
 
 import (
-	loginPage "EduHITZone/src/page"
+	pages "EduHITZone/src/page"
 	"net/http"
 )
 
 func main() {
+	pages.AddIndexHandles()
 	fs := http.FileServer(http.Dir("public/"))
-	http.Handle("/", http.StripPrefix("/", fs))
+	http.Handle("/", fs)
 
-	loginPage.AddHandles()
+	pages.AddLoginHandles()
 	http.ListenAndServe(":42069", nil)
 }
