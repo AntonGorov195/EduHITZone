@@ -1,0 +1,30 @@
+
+.content-course-list {
+	padding: 20px;
+	list-style: none;
+	display: flex;
+	overflow: auto;
+}
+.content-course-preview-item {
+	margin: 20px;
+	padding: 30px;
+	transition-duration: 0.4s;
+	background-color: var(--color-bg);
+}
+.content-course-preview-item:hover {
+	margin: 30px;
+	scale: 110%;
+}
+.content-course-preview {
+	display: inline-flex;
+	flex-direction: column;
+	color: white;
+}
+.content-course-preview-image {
+	max-height: 200px;
+}
+.content-course-group-container {
+	margin-top: 20px;
+	padding-inline-start: 30px;
+}
+

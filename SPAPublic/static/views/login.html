@@ -1,0 +1,13 @@
+<form class="login-form" hx-target="#error-msg" hx-post="/api/v1/login/form" hx-swap="outerHTML">
+    <label class="login-label">שם משתמש:</label> <input type="text" name="name">
+    <label class="login-label">סיסמה:</label> <input type="password" name="password">
+    <div class="login-enter-btn-container">
+        <button class="login-enter-btn">כניסה</button>
+        <button class="login-new-btn">משתמש חדש</button>
+    </div>
+    <!-- <button>יצירת משתמש</button> -->
+    <span id="error-msg"></span>
+    <script>
+        document.title = "EduHITZone - Login";
+    </script>
+</form>

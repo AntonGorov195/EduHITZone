@@ -1,5 +1,3 @@
-{{ block "primary-v1" . }}
-
 <!DOCTYPE html lang="he">
 <html>
 
@@ -7,9 +5,12 @@
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    {{ range .HeadEx }}
-    {{ . }}
-    {{ end }}
+    <link data-name="common" rel='stylesheet' type='text/css' media='screen' href='/static/css/common.css'>
+    <link data-name="entry" rel='stylesheet' type='text/css' media='screen' href='/static/css/entry.css'>
+    <link data-name="login" rel='stylesheet' type='text/css' media='screen' href='/static/css/login.css'>
+    <link data-name="content" rel='stylesheet' type='text/css' media='screen' href='/static/css/content.css'>
+    <link data-name="error" rel='stylesheet' type='text/css' media='screen' href='/static/css/error.css'>
+    <title> EduHITZone </title>
     <script src="https://unpkg.com/htmx.org@1.9.12"></script>
 </head>
 
@@ -22,8 +23,8 @@
             EduHITZone
         </h1>
     </header>
-    <main id="page-main">
-        {{ .Main }}
+    <main id="main-container">
+        {{ . }}
     </main>
     <footer>
         <div><span> © כל הזכויות שמורות ל HIT מכון טכנולוגי
@@ -32,12 +33,3 @@
 </body>
 
 </html>
-{{ end }}
-
-{{ block "css" . }}
-<link rel='stylesheet' type='text/css' media='screen' href='{{ . }}'>
-{{ end }}
-
-{{ block "title" . }}
-    <title> {{ . }} </title>
-{{ end }}
