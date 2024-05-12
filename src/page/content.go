@@ -1,24 +1,24 @@
-package page
+package spa
 
-func AddContentHandles() {
-	// 	http.HandleFunc("/login/login.html", func(w http.ResponseWriter, r *http.Request) {
-	// 		tmpl_main, _ := template.ParseFiles("public/login/login.html")
-	// 		tmpl, _ := templazte.ParseFiles("public/template.html")
-	//
-	// 		var buf bytes.Buffer
-	// 		// Reads the main content of the page.
-	// 		if err := tmpl_main.Execute(&buf, nil); err != nil {
-	// 			panic(err)
-	// 		}
-	// 		page_main_content := buf.String()
-	//
-	// 		// Add the main content to the template, which will be rendered.
-	// 		tmpl.ExecuteTemplate(w, "primary", PageTemplateData{
-	// 			[]template.HTML{
-	// 				GetCSSElement(tmpl, "login.css"),
-	// 				GetCSSElement(tmpl, "../common.css"),
-	// 			},
-	// 			template.HTML(page_main_content),
-	// 			"Login"})
-	// 	})
+import (
+	"bytes"
+	"fmt"
+	"html/template"
+	"net/http"
+)
+
+func AddContentHandle() {
+	http.HandleFunc("/content", func(w http.ResponseWriter, r *http.Request) {
+		var buf bytes.Buffer
+		tmpl, err := template.ParseFiles("SPAPublic/static/views/content.html")
+		if err != nil {
+			fmt.Println("Failed to parse content.html template")
+			panic(err.Error())
+		}
+		if err := tmpl.Execute(&buf, nil); err != nil {
+			fmt.Println("Failed to execute content.html template")
+			panic(err.Error())
+		}
+		Render(w, r, buf)
+	})
 }
