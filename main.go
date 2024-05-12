@@ -1,9 +1,12 @@
 package main
 
 import (
+	_ "database/sql"
 	"fmt"
 	"html/template"
 	"net/http"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 type Data struct {
@@ -11,6 +14,7 @@ type Data struct {
 }
 
 func main() {
+
 	// http.HandleFunc("/index.html", func(w http.ResponseWriter, r *http.Request) {
 	// 	tmpl, _ := template.ParseFiles("public/index.html")
 	// 	tmpl.Execute(w, nil)
