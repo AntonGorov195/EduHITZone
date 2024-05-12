@@ -1,9 +1,7 @@
 package main
 
 import (
-	HITDB "EduHITZone/src/MySQL"
-	spa "EduHITZone/src/singlePage"
-	"fmt"
+	spa "EduHITZone/src/page"
 	"net/http"
 )
 
@@ -24,10 +22,10 @@ func main() {
 	spa.AddIndexHandle()
 	spa.AddLoginHandle()
 	spa.AddContentHandle()
-
-	db := HITDB.ConnectDB()
-	HITDB.AddCourse(db, "name")
-	fmt.Println(HITDB.GetCourses(db))
+	//
+	// 	db := HITDB.ConnectDB()
+	// 	HITDB.AddCourse(db, "name")
+	// 	fmt.Println(HITDB.GetCourses(db))
 
 	http.ListenAndServe(":42069", nil)
 }
