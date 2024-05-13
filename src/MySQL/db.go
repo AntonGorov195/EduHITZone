@@ -30,5 +30,3 @@ type Students struct {
 	Academic_year int
 	Date_of_birth string
 }
-
-func AddStudents(db *sql.DB)
