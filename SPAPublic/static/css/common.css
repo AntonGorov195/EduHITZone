@@ -119,3 +119,13 @@ button:active {
 	*/
 	z-index: 1;
 }
+/* HIT logo at the top of the page. */
+.logo {
+	border-radius: 9px;
+	padding: 7px;
+	transition-duration: 0.5s;
+	background-color: #ffffffff;
+	height: 95px;
+	transition-duration: 0.5s;
+	transition-timing-function: ease-out;
+}
