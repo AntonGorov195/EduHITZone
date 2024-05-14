@@ -17,15 +17,8 @@ import (
 
 // Working on a single page app.
 func main() {
-
 	http.Handle("/static/", http.FileServer(http.Dir("SPAPublic/")))
-	spa.AddIndexHandle()
-	spa.AddLoginHandle()
-	spa.AddContentHandle()
-	//
-	// 	db := HITDB.ConnectDB()
-	// 	HITDB.AddCourse(db, "name")
-	// 	fmt.Println(HITDB.GetCourses(db))
+	spa.AddPageHandles()
 
 	http.ListenAndServe(":42069", nil)
 }
