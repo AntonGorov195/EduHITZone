@@ -1,25 +1,13 @@
 package spa
 
 import (
-	"bytes"
-	"fmt"
 	"html/template"
 	"net/http"
 )
 
 func AddLoginHandle() {
 	http.HandleFunc("/login", func(w http.ResponseWriter, r *http.Request) {
-		var buf bytes.Buffer
-		tmpl, err := template.ParseFiles("SPAPublic/static/views/login.html")
-		if err != nil {
-			fmt.Println("Failed to parse login.html template")
-			panic(err.Error())
-		}
-		if err := tmpl.Execute(&buf, nil); err != nil {
-			fmt.Println("Failed to execute login.html template")
-			panic(err.Error())
-		}
-		Render(w, r, buf)
+		DrawView(w, r, "login")
 	})
 	http.HandleFunc("/api/v1/login/form", func(w http.ResponseWriter, r *http.Request) {
 		type ErrorMessageData struct {
@@ -51,5 +39,8 @@ func AddLoginHandle() {
 			panic(err)
 		}
 
+	})
+	http.HandleFunc("/api/v1/login/new-acc", func(w http.ResponseWriter, r *http.Request) {
+		DrawView(w, r, "new-acc")
 	})
 }
