@@ -1,3 +1,11 @@
+body {
+	display: flex;
+	flex-direction: column;
+}
+header {
+	padding: 5px;
+}
+
 @keyframes waveAnim {
 	0% {
 		transform: translateX(3px);
@@ -12,22 +20,14 @@ h1 {
 	width: fit-content;
 	margin: auto;
 
-	/* 
-		Small animation for the hand waving. 
-		Small, but neat.
-	*/
 	animation-name: waveAnim;
 	animation-duration: 1.5s;
 	animation-iteration-count: infinite;
 	animation-direction: alternate;
 	animation-timing-function: ease-in-out;
 }
-header {
-	padding: 0;
-}
 main {
 	padding-top: 20px;
-	align-items: start;
 }
 .course-list {
 	padding: 20px;
@@ -56,4 +56,18 @@ main {
 }
 .course-group-container {
 	padding-inline-start: 30px;
+}
+
+img {
+	opacity: 0;
+	transition-duration: 1s;
+	transition-timing-function: ease;
+}
+/* 
+	The loaded class is (should be) added upon onload event is triggered on the img element. Like this:
+	 <img onload="this.classList.add('loaded')">
+*/
+img.loaded {
+	opacity: 1;
+	/* transform: scale(1); */
 }
