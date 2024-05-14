@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../common.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='createAccount.css'>
+    <script defer src="createAccount.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1 class="name">יצירת משתמש</h1>
+    </header>
+    <div class="form-container">
+        <form class="yes-or-no" autocomplete="off">
+            <div class="is-student">
+                <input id="is-student-input" type="checkbox">
+                <label>האם אתם סטודנט ב-HIT</label>
+            </div>
+            <div id="student-form" class="student form-hidden">
+                <button id="send-code">שלחו קוד</button>
+                <label>מייל HIT</label>
+                <input>
+                <label>קוד מייל</label>
+                <input>
+            </div>
+            <div class="other">
+                <label>שם מלא:</label>
+                <input>
+                <label>מספר טלפון:</label>
+                <input>
+                <label>שם משתמש:</label>
+                <input>
+                <label>סיסמה:</label>
+                <input type="password">
+                <button>אשר</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
