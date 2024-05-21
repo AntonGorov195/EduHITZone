@@ -3,7 +3,7 @@
     <label class="login-label">סיסמה:</label> <input type="password" name="password">
     <div class="login-enter-btn-container">
         <button class="login-enter-btn">כניסה</button>
-        <button class="login-new-btn" hx-get="/new-acc" hx-target="#main-container" hx-swap="innerHTML">משתמש חדש</button>
+        <button class="login-new-btn" hx-get="/new-acc" hx-target="#main-container" hx-swap="innerHTML" hx-push-url="true">משתמש חדש</button>
     </div>
     <!-- <button>יצירת משתמש</button> -->
     <span id="error-msg"></span>

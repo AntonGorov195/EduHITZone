@@ -4,7 +4,7 @@ import (
 	"net/http"
 )
 
-func AddIndexHandle() {
+func addIndexHandle() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		if r.URL.Path != "/" {
 			DrawView(w, r, "error")
@@ -16,8 +16,8 @@ func AddIndexHandle() {
 }
 
 func AddPageHandles() {
-	AddIndexHandle()
-	AddLoginHandle()
-	AddContentHandle()
-	AddNewAccountHandle()
+	addIndexHandle()
+	addLoginHandle()
+	addContentHandle()
+	addNewAccountHandle()
 }
