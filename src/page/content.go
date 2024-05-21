@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-func AddContentHandle() {
+func addContentHandle() {
 	http.HandleFunc("/content", func(w http.ResponseWriter, r *http.Request) {
 		var buf bytes.Buffer
 		tmpl, err := template.ParseFiles("SPAPublic/static/views/content.html")

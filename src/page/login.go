@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-func AddLoginHandle() {
+func addLoginHandle() {
 	http.HandleFunc("/login", func(w http.ResponseWriter, r *http.Request) {
 		DrawView(w, r, "login")
 	})
