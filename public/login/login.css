@@ -1,16 +1,26 @@
-body {
-    /* justify-content: center; */
-}
-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 form {
-    background-color: var(--color-bg-low-alpha);
-    display: flex;
-    align-items: center;
-    margin: auto;
-    flex-direction: column;
-    padding: 30px;
+	background-color: var(--color-bg);
+	color: white;
+	text-decoration: underline;
+	display: flex;
+	margin: auto;
+	flex-direction: column;
+	padding: 30px;
+}
+label {
+	padding: 3px;
+}
+.enter-btn {
+	margin-top: 50px;
+	padding: 2px;
+	padding-left: 30px;
+	padding-right: 30px;
+    background-color: var(--color-bg-soft);
+    transition-duration: 0.2s;
+    width:fit-content;
+}
+.enter-btn:hover {
+	padding: 5px;
+	padding-left: 50px;
+	padding-right: 50px;
 }
