@@ -57,6 +57,7 @@ func GetStudents(db *sql.DB) ([]Student, error) {
 	for rows.Next() {
 		var student Student
 		err = rows.Scan(&student.student_id, &student.first_name, &student.last_name, &student.email, &student.academic_year, &student.date_of_birth, &student.phone_number)
+
 		if err != nil {
 			return nil, fmt.Errorf("failed to scan student: %w", err)
 		}
