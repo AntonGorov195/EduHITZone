@@ -25,15 +25,15 @@ func main() {
 	db := hitdb.ConnectDB()
 	defer db.Close()
 
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("SPAPublic/"))))
-	spa.AddPageHandles()
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("SPAPublic/static/"))))
+	spa.AddPageHandles(db)
 
 	err := AddStudent(db, "yovel")
 	//students, err := GetStudents(db)
 	if err != nil {
 		log.Fatalf("Failed to insert user: %v", err)
 	}
-	//fmt.Println("students list:", students)
+
 	http.ListenAndServe(":42069", nil)
 
 }

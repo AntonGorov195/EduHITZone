@@ -2,12 +2,13 @@ package spa
 
 import (
 	"bytes"
+	"database/sql"
 	"fmt"
 	"html/template"
 	"net/http"
 )
 
-func addContentHandle() {
+func addContentHandle(db *sql.DB) {
 	http.HandleFunc("/content", func(w http.ResponseWriter, r *http.Request) {
 		var buf bytes.Buffer
 		tmpl, err := template.ParseFiles("SPAPublic/static/views/content.html")

@@ -1,11 +1,13 @@
 package spa
 
 import (
+	hitdb "EduHITZone/src/MySQL"
+	"database/sql"
 	"html/template"
 	"net/http"
 )
 
-func addNewAccountHandle() {
+func addNewAccountHandle(db *sql.DB) {
 	http.HandleFunc("/new-acc", func(w http.ResponseWriter, r *http.Request) {
 		DrawView(w, r, "new-acc")
 	})
@@ -38,6 +40,7 @@ func addNewAccountHandle() {
 		if err != nil {
 			panic(err)
 		}
+		hitdb.AddStudent(db, r.Form.Get("name"), r.Form.Get("name"), r.Form.Get("email"), 1, r.Form.Get("date-of-birth"))
 
 	})
 
