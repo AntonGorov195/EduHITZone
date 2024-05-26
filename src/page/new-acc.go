@@ -41,6 +41,7 @@ func addNewAccountHandle(db *sql.DB) {
 			panic(err)
 		}
 		hitdb.AddStudent(db, r.Form.Get("name"), r.Form.Get("name"), r.Form.Get("email"), 1, r.Form.Get("date-of-birth"))
+
 	})
 
 }
