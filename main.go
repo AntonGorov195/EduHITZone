@@ -25,7 +25,7 @@ func main() {
 	db := hitdb.ConnectDB()
 	defer db.Close()
 
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("SPAPublic/"))))
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("SPAPublic/static/"))))
 	spa.AddPageHandles()
 
 	err := AddStudent(db, "yovel")
