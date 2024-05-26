@@ -1,4 +1,27 @@
-<!-- Create account -->
-<div class="new-acc-container">
-    Create
-</div>
+<form class="new-acc-form" hx-target="#error-msg" hx-post="/api/v1/new-acc/form" hx-swap="outerHTML">
+    <label class="new-acc-label">תעודת זהות:</label> <input type="text" name="name">
+    <label class="new-acc-label">אימייל:</label> <input type="text" name="email">
+    <label class="new-acc-label">סיסמה:</label> <input type="password" name="password">
+    <label class="new-acc-label">סיסמה שוב:</label> <input type="password">
+    <label class="new-acc-label">תאריך לידה:</label> <input type="date" name="date-of-birth">
+    
+    <div class="new-acc-enter-btn-container">
+        <button class="new-acc-enter-btn abc g-recaptcha" data-sitekey="6Le7yecpAAAAAKbHLFrxaLJj7uI0RrpevEmHuOQo"
+        data-callback='onSubmit'
+        data-action='submit'>צור משתמש</button>
+    </div>
+    <!-- <button>יצירת משתמש</button> -->
+    <span id="error-msg"></span>
+    <script>
+        document.title = "EduHITZone - Create Account";
+    </script>
+    <script>
+        // document.querySelector("form").addEventListener("submit", onClick);
+
+        // function onClick(e) {
+        //   grecaptcha.enterprise.ready(async () => {
+        //     const token = await grecaptcha.enterprise.execute('6Le7yecpAAAAAKbHLFrxaLJj7uI0RrpevEmHuOQo', {action: 'LOGIN'});
+        //   });
+        // }
+      </script>
+</form>

@@ -1,10 +1,11 @@
 package spa
 
 import (
+	"database/sql"
 	"net/http"
 )
 
-func AddIndexHandle() {
+func addIndexHandle(db *sql.DB) {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		if r.URL.Path != "/" {
 			DrawView(w, r, "error")
@@ -15,9 +16,9 @@ func AddIndexHandle() {
 	})
 }
 
-func AddPageHandles() {
-	AddIndexHandle()
-	AddLoginHandle()
-	AddContentHandle()
-	AddNewAccountHandle()
+func AddPageHandles(db *sql.DB) {
+	addIndexHandle(db)
+	addLoginHandle(db)
+	addContentHandle(db)
+	addNewAccountHandle(db)
 }

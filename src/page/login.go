@@ -1,11 +1,12 @@
 package spa
 
 import (
+	"database/sql"
 	"html/template"
 	"net/http"
 )
 
-func AddLoginHandle() {
+func addLoginHandle(db *sql.DB) {
 	http.HandleFunc("/login", func(w http.ResponseWriter, r *http.Request) {
 		DrawView(w, r, "login")
 	})
