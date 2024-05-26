@@ -1,5 +1,36 @@
-.new-acc-container {
-    background-color: var(--color-bg);
-    color:white;
-    padding: 10px;
+.new-acc-form {
+	background-color: var(--color-bg);
+	color: white;
+	display: flex;
+	margin: auto;
+	flex-direction: column;
+	padding: 30px;
+}
+.new-acc-label {
+	padding: 3px;
+	text-decoration: underline;
+}
+.new-acc-enter-btn,
+.new-acc-new-btn {
+	margin-top: 50px;
+	padding: 2px;
+	padding-left: 30px;
+	padding-right: 30px;
+	background-color: var(--color-bg-soft);
+	transition-duration: 0.2s;
+	width: fit-content;
+}
+.new-acc-enter-btn:hover {
+	padding: 5px;
+	padding-left: 40px;
+	padding-right: 40px;
+}
+.new-acc-new-btn:hover {
+	padding: 3px;
+	padding-left: 35px;
+	padding-right: 35px;
+}
+
+.new-acc-enter-btn-container {
+	text-decoration: none;
 }

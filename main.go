@@ -26,7 +26,7 @@ func main() {
 	defer db.Close()
 
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("SPAPublic/static/"))))
-	spa.AddPageHandles()
+	spa.AddPageHandles(db)
 
 	err := AddStudent(db, "yovel")
 	//students, err := GetStudents(db)
