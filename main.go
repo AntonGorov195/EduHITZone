@@ -28,18 +28,18 @@ func main() {
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("SPAPublic/"))))
 	spa.AddPageHandles()
 
-	//err := AddStudent(db, "yovel")
-	students, err := GetStudents(db)
+	err := AddStudent(db, "yovel")
+	//students, err := GetStudents(db)
 	if err != nil {
 		log.Fatalf("Failed to insert user: %v", err)
 	}
-	fmt.Println("students list:", students)
+	//fmt.Println("students list:", students)
 	http.ListenAndServe(":42069", nil)
 
 }
 func AddStudent(db *sql.DB, first_name string) error {
-	//_, err := db.Exec("INSERT INTO students (first_name) VALUES (?);", first_name)
-	_, err := db.Exec("DELETE FROM students WHERE students_id IS NULL;")
+	_, err := db.Exec("INSERT INTO students (first_name) VALUES (?);", first_name)
+	//_, err := db.Exec("DELETE FROM students WHERE students_id IS NULL;")
 	if err != nil {
 		return fmt.Errorf("failed to insert student: %w", err)
 	}
