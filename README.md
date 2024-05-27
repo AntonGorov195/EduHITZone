@@ -363,7 +363,7 @@ Continuous operation, updates, and real-time handling through a dedicated suppor
 
 
 
-
+[Download the Website visual guide]("C:\Users\OFEKA\Downloads\Website visual guide.pdf")
 
 
 [Link to the Specification Document](./specification%20file.pdf)
