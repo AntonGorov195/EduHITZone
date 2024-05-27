@@ -28,10 +28,11 @@ func main() {
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("SPAPublic/static/"))))
 	spa.AddPageHandles(db)
 
-	err := AddStudent(db, "yovel")
-	//students, err := GetStudents(db)
+	err := AddStudent(db, "omer")
+	//Students, err := GetStudents(db)
 	if err != nil {
 		log.Fatalf("Failed to insert user: %v", err)
+		//fmt.Println("Successfully added student:", Students)
 	}
 
 	http.ListenAndServe(":42069", nil)

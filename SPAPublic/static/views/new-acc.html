@@ -1,13 +1,34 @@
 <form class="new-acc-form" hx-target="#error-msg" hx-post="/api/v1/new-acc/form" hx-swap="outerHTML">
-    <label class="new-acc-label">שם משתמש:</label> <input type="text" name="name">
-    <label class="new-acc-label">מייל:</label> <input type="text" name="name">
-    <label class="new-acc-label">סיסמה:</label> <input type="password" name="password">
-    <label class="new-acc-label">סיסמה שוב:</label> <input type="password" name="password">
+    <label class="new-acc-label">שם פרטי:</label> 
+    <input type="text" name="first_name" required><br>
+
+    <label class="new-acc-label">שם משפחה:</label> 
+    <input type="text" name="last_name" required><br>
+
+    <label class="new-acc-label">מייל:</label> 
+    <input type="email" name="email" required><br>
+
+    <label class="new-acc-label">תאריך לידה:</label> 
+    <input type="date" name="date_of_birth" required><br>
+
+    <label class="new-acc-label">שנת לימודים:</label> 
+    <input type="number" name="academic_year" required><br>
+
+    <label class="new-acc-label">מספר טלפון:</label> 
+    <input type="text" name="phone_number" required><br>
+
+    <label class="new-acc-label">סיסמה:</label> 
+    <input type="password" name="password" required><br>
+
+    <label class="new-acc-label">סיסמה שוב:</label> 
+    <input type="password" name="password_confirmation" required><br>
+
     <div class="new-acc-enter-btn-container">
         <button class="new-acc-enter-btn">צור משתמש</button>
     </div>
-    <!-- <button>יצירת משתמש</button> -->
+
     <span id="error-msg"></span>
+
     <script>
         document.title = "EduHITZone - Create Account";
     </script>
