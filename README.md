@@ -1,4 +1,4 @@
-0. Introduction : 
+ Introduction : 
 
 ** Background - Current Situation
 
