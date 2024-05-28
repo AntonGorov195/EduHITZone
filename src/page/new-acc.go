@@ -9,7 +9,7 @@ import (
 
 func addNewAccountHandle(db *sql.DB) {
 	http.HandleFunc("/new-acc", func(w http.ResponseWriter, r *http.Request) {
-		DrawView(w, r, "new-acc")
+		drawView(w, r, "new-acc")
 	})
 	http.HandleFunc("/api/v1/new-acc/form", func(w http.ResponseWriter, r *http.Request) {
 		type ErrorMessageData struct {
@@ -40,7 +40,7 @@ func addNewAccountHandle(db *sql.DB) {
 		if err != nil {
 			panic(err)
 		}
-		hitdb.AddStudent(db, r.Form.Get("name"), r.Form.Get("name"), r.Form.Get("email"), 1, r.Form.Get("date-of-birth"))
+		hitdb.AddStudent(db, r.Form.Get("name"), r.Form.Get("name"), r.Form.Get("email"), 1, "1920-3-3")
 
 	})
 

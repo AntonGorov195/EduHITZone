@@ -13,8 +13,8 @@
     <link rel='stylesheet' type='text/css' media='screen' href='/static/css/new-acc.css'>
     <title> EduHITZone </title>
     <script src="https://unpkg.com/htmx.org@1.9.12"></script>
-    <script
-        src="https://www.google.com/recaptcha/enterprise.js?render=6Le7yecpAAAAAKbHLFrxaLJj7uI0RrpevEmHuOQo"></script>
+    <!-- <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LerkOgpAAAAANrshRF5-fpQXei6_54BE27mjqYS"></script> -->
 </head>
 
 <body>
@@ -30,8 +30,10 @@
         {{ . }}
     </main>
     <footer>
+        <div id="err-footer" class="error-footer"></div>
         <div><span> © כל הזכויות שמורות ל HIT מכון טכנולוגי
                 חולון</span><span style="margin-right:50px;"> בניית אתרים AO</span></div>
+        <script src="static/js/error-footer.js"></script>
     </footer>
 </body>
 

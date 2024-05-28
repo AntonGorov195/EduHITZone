@@ -2,32 +2,49 @@ package spa
 
 import (
 	"bytes"
-	"fmt"
 	"html/template"
 	"net/http"
 )
 
-func DrawView(w http.ResponseWriter, r *http.Request, view_name string) {
+// Write the view into the writer. If this wasn't an htmx request then it will assume a complete page re-render.
+// This is usful with hx-push-url. If it isn't HTMX request then the user entered the url manually, meaning the site was reloaded.
+// However, if it was an HTMX request then the site is already loaded, meaning you only need load the view.
+func drawView(w http.ResponseWriter, r *http.Request, view_name string) {
+	// Parse the view.
 	var buf bytes.Buffer
 	tmpl, err := template.ParseFiles("SPAPublic/static/views/" + view_name + ".html")
 	if err != nil {
-		fmt.Println("Failed to parse " + view_name + ".html template")
-		panic(err.Error())
-	}
-	if err := tmpl.Execute(&buf, nil); err != nil {
-		fmt.Println("Failed to execute " + view_name + ".html template")
-		panic(err.Error())
-	}
-	Render(w, r, buf)
-}
-
-func Render(w http.ResponseWriter, r *http.Request, buf bytes.Buffer) {
-	// If it wasn't caused by htmx, render the whole page.
-	if r.Header.Get("HX-Request") == "" {
-		tmpl, _ := template.ParseFiles("SPAPublic/index.html")
-		tmpl.Execute(w, template.HTML(buf.String()))
+		http.Error(w, err.Error(), 500)
 		return
 	}
-	tmpl, _ := template.New("view").Parse("{{ . }}")
-	tmpl.Execute(w, template.HTML(buf.String()))
+	if err := tmpl.Execute(&buf, nil); err != nil {
+		http.Error(w, err.Error(), 500)
+		return
+	}
+	if r.Header.Get("HX-Request") == "" {
+		// If not HTMX, re-render the page.
+		tmpl, err := template.ParseFiles("SPAPublic/index.html")
+		if err != nil {
+			http.Error(w, err.Error(), 500)
+			return
+		}
+		err = tmpl.Execute(w, template.HTML(buf.String()))
+
+		if err != nil {
+			http.Error(w, err.Error(), 500)
+		}
+		return
+	}
+	// If it is HTMX then render the view.
+	tmpl, err = template.New("view").Parse("{{ . }}")
+	if err != nil {
+		http.Error(w, "Something went really wrong. This must mean that the Go std no longer functions.", 500)
+		return
+	}
+
+	err = tmpl.Execute(w, template.HTML(buf.String()))
+	if err != nil {
+		http.Error(w, err.Error(), 500)
+		return
+	}
 }

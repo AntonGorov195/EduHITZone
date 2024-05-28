@@ -8,7 +8,7 @@ import (
 
 func addLoginHandle(db *sql.DB) {
 	http.HandleFunc("/login", func(w http.ResponseWriter, r *http.Request) {
-		DrawView(w, r, "login")
+		drawView(w, r, "login")
 	})
 	http.HandleFunc("/api/v1/login/form", func(w http.ResponseWriter, r *http.Request) {
 		type ErrorMessageData struct {
@@ -42,6 +42,6 @@ func addLoginHandle(db *sql.DB) {
 
 	})
 	http.HandleFunc("/api/v1/login/new-acc", func(w http.ResponseWriter, r *http.Request) {
-		DrawView(w, r, "new-acc")
+		drawView(w, r, "new-acc")
 	})
 }
