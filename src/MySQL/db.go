@@ -3,6 +3,7 @@ package hitdb
 import (
 	"database/sql"
 	"fmt"
+	"os"
 
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -10,7 +11,10 @@ import (
 var db *sql.DB
 
 func ConnectDB() *sql.DB {
-	db, err := sql.Open("mysql", "root:ofekbiton1234@tcp(localhost:3306)/hit")
+	fmt.Println(os.Getenv("ofekbiton1234"))
+	pswd := os.Getenv("ofekbiton1234")
+	db, err := sql.Open("mysql", "root:"+pswd+"@tcp(localhost:3306)/hit")
+
 	if err != nil {
 		fmt.Println("Error opening db")
 		panic(err.Error())
