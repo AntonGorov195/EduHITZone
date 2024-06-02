@@ -1,5 +1,31 @@
+{{ block "primary" . }}
 <div class="content-course-group-container" id="course-group-container">
     <h2>קורסים פופולרים</h2>
+    
+    <ul class="content-course-list">
+        {{ range . }}
+        {{ template "a" . }}
+        {{ end }}
+    </ul>
+</div>
+<div>
+    <button hx-get="/submit-course" hx-push-url="true" hx-target="#main-container" hx-swap="innerHTML">Create New Course</button>
+</div>
+{{ end }}
+
+{{ block "a" . }}
+<li class="content-course-preview-item drop-box-shadow">
+    <a class="content-course-preview"
+        href="https://he.wikipedia.org/wiki/C_(%D7%A9%D7%A4%D7%AA_%D7%AA%D7%9B%D7%A0%D7%95%D7%AA)">
+        <img class="content-course-preview-image"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/C_Programming_Language.svg/380px-C_Programming_Language.svg.png?20201031132917">
+        <div>
+           {{ . }}
+        </div>
+    </a>
+</li>
+{{ end }}
+<!-- 
     <ul class="content-course-list">
         <li class="content-course-preview-item drop-box-shadow">
             <a class="content-course-preview"
@@ -32,7 +58,7 @@
         </li>
     </ul>
     <hr>
-    <h2>מתמטיקה</h2
+    <h2>מתמטיקה</h2>
     <ul class="content-course-list">
         <li class="content-course-preview-item drop-box-shadow">
             <a class="content-course-preview"
@@ -45,4 +71,5 @@
             </a>
         </li>
     </ul>
-</div>
+
+--> 
