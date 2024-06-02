@@ -13,7 +13,7 @@ func addContentHandle(db *sql.DB) {
 		courses_names := []string{"Let the", " hit the"}
 
 		var buf bytes.Buffer
-		tmpl, err := template.ParseFiles("SPAPublic/static/views/content.html")
+		tmpl, err := template.ParseFiles("public/static/views/content.html")
 		if err != nil {
 			http.Error(w, err.Error(), 500)
 			return

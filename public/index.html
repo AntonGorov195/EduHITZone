@@ -1,12 +1,40 @@
+<!DOCTYPE html lang="he">
+<html>
 
-<nav class="btn-container">
-    <div class="login btn-main drop-box-shadow">
-        <a href="login/login.html">כניסה</a>
-    </div>
-    <div class="login-guest btn-main drop-box-shadow">
-        <a href="./contentPage/content.html?user=guest">כניסה בתור אורח</a>
-    </div>
-    <div class="create-account btn-main drop-box-shadow">
-        <a href="login/login.html">יצירת משתמש</a>
-    </div>
-</nav>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/static/css/common.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/static/css/entry.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/static/css/login.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/static/css/content.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/static/css/error.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/static/css/new-acc.css'>
+    <title> EduHITZone </title>
+    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+    <!-- <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LerkOgpAAAAANrshRF5-fpQXei6_54BE27mjqYS"></script> -->
+</head>
+
+<body>
+    <header class="drop-box-shadow">
+        <a href="https://www.hit.ac.il">
+            <img class="logo" src="https://www.hit.ac.il/sites/projects/hit/views/he/images/hit_logo.svg">
+        </a>
+        <h1>
+            EduHITZone
+        </h1>
+    </header>
+    <main id="main-container">
+        {{ . }}
+    </main>
+    <footer>
+        <div id="err-footer" class="error-footer"></div>
+        <div><span> © כל הזכויות שמורות ל HIT מכון טכנולוגי
+                חולון</span><span style="margin-right:50px;"> בניית אתרים AO</span></div>
+        <script src="static/js/error-footer.js"></script>
+    </footer>
+</body>
+
+</html>
