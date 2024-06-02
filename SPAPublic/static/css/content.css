@@ -27,4 +27,8 @@
 	margin-top: 20px;
 	padding-inline-start: 30px;
 }
-
+.content-submit-course{
+	color:white;
+	background-color: var(--color-bg);
+	padding:5px;
+}
