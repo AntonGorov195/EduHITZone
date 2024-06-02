@@ -129,3 +129,17 @@ button:active {
 	transition-duration: 0.5s;
 	transition-timing-function: ease-out;
 }
+
+.error-footer {
+	border-color: red;
+	background-color: pink;
+	color:black;
+	margin: auto;
+	margin-bottom: 4px;
+	width: max-content;
+	padding: 10px;
+	border-width: 3px;
+	border-style: solid;
+	display: none;
+	direction: ltr;
+}

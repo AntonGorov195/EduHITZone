@@ -12,7 +12,7 @@ import (
 
 func addNewAccountHandle(db *sql.DB) {
 	http.HandleFunc("/new-acc", func(w http.ResponseWriter, r *http.Request) {
-		DrawView(w, r, "new-acc")
+		drawView(w, r, "new-acc")
 	})
 
 	http.HandleFunc("/api/v1/new-acc/form", func(w http.ResponseWriter, r *http.Request) {
@@ -45,7 +45,6 @@ func addNewAccountHandle(db *sql.DB) {
 		if err != nil {
 			panic(err)
 		}
-
 		academicYearStr := r.Form.Get("academic_year")
 		academicYear, err := strconv.Atoi(academicYearStr)
 		if err != nil {
