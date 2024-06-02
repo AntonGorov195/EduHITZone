@@ -21,17 +21,6 @@ func addNewAccountHandle(db *sql.DB) {
 		const failed = "<span id=\"error-msg\" style=\"color:green;\">Good, now I have to add it to the database. I will need to talk with Ofek Biton about it.</span>"
 
 		name := r.Form.Get("name")
-		if name == "Ofek" || name == "Anton" {
-			tmpl, err := template.New("cool_name").Parse(success)
-			if err != nil {
-				panic(err)
-			}
-			err = tmpl.Execute(w, ErrorMessageData{Name: name})
-			if err != nil {
-				panic(err)
-			}
-			return
-		}
 		tmpl, err := template.New("invalid_name").Parse(failed)
 		if err != nil {
 			panic(err)
