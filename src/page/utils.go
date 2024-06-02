@@ -12,7 +12,7 @@ import (
 func sendViewBuf(w http.ResponseWriter, r *http.Request, view bytes.Buffer) {
 	if r.Header.Get("HX-Request") == "" {
 		// If not HTMX, re-render the page.
-		tmpl, err := template.ParseFiles("SPAPublic/index.html")
+		tmpl, err := template.ParseFiles("public/index.html")
 		if err != nil {
 			http.Error(w, err.Error(), 500)
 			return
@@ -41,7 +41,7 @@ func sendViewBuf(w http.ResponseWriter, r *http.Request, view bytes.Buffer) {
 // Loads view into a buffer.
 func loadView(view_name string, data any) (bytes.Buffer, error) {
 	var buf bytes.Buffer
-	tmpl, err := template.ParseFiles("SPAPublic/static/views/" + view_name + ".html")
+	tmpl, err := template.ParseFiles("public/static/views/" + view_name + ".html")
 	if err != nil {
 		// Return empty buffer
 		return bytes.Buffer{}, err
