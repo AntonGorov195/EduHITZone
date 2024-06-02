@@ -9,11 +9,7 @@
     </ul>
 </div>
 <div>
-    <span>New Course</span>
-    <form>
-        <label>Name</label>
-        <input>
-    </form>
+    <button hx-get="/submit-course" hx-push-url="true" hx-target="#main-container" hx-swap="innerHTML">Create New Course</button>
 </div>
 {{ end }}
 

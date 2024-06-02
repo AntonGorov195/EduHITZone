@@ -41,7 +41,4 @@ func addLoginHandle(db *sql.DB) {
 		}
 
 	})
-	http.HandleFunc("/api/v1/login/new-acc", func(w http.ResponseWriter, r *http.Request) {
-		drawView(w, r, "new-acc")
-	})
 }

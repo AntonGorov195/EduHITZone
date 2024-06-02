@@ -21,4 +21,5 @@ func AddPageHandles(db *sql.DB) {
 	addLoginHandle(db)
 	addContentHandle(db)
 	addNewAccountHandle(db)
+	addCourseSubmitionHandle(db)
 }

@@ -24,4 +24,5 @@ func addContentHandle(db *sql.DB) {
 		}
 		sendViewBuf(w, r, buf)
 	})
+
 }
