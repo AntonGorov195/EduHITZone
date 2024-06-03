@@ -30,5 +30,6 @@
 .content-submit-course{
 	color:white;
 	background-color: var(--color-bg);
-	padding:5px;
+	padding:10px;
+	border-radius: 20px;
 }

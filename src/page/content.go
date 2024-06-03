@@ -10,7 +10,7 @@ import (
 func addContentHandle(db *sql.DB) {
 	http.HandleFunc("/content", func(w http.ResponseWriter, r *http.Request) {
 		// hitdb.GetCourses(db)
-		courses_names := []string{"Let the", " hit the"}
+		courses_names := []string{"This code is", "loaded dynamically"}
 
 		var buf bytes.Buffer
 		tmpl, err := template.ParseFiles("public/static/views/content.html")
