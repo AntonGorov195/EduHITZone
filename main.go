@@ -15,7 +15,7 @@ func main() {
 	db := hitdb.ConnectDB()
 	defer db.Close()
 
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("SPAPublic/static/"))))
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("public/static/"))))
 	spa.AddPageHandles(db)
 	http.ListenAndServe(":42069", nil)
 
