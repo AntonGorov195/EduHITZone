@@ -26,15 +26,14 @@ html {
 	background-color: var(--color-bg-soft);
 	min-height: 100vh;
 	margin: 0;
+	min-width: max-content;
+	overflow-x: hidden;
 }
 
 header {
 	text-align: center;
 	background-color: var(--color-bg);
 	color: white;
-	padding: 20px;
-}
-header {
 	padding: 20px;
 }
 h1 {
