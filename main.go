@@ -16,7 +16,7 @@ func main() {
 	defer db.Close()
 
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("public/static/"))))
-	spa.AddPageHandles(db)
+	spa.AddPageHandles(nil)
 
 	http.ListenAndServe(":42069", nil)
 
