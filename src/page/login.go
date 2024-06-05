@@ -1,13 +1,14 @@
 package spa
 
 import (
+	"database/sql"
 	"html/template"
 	"net/http"
 )
 
-func addLoginHandle() {
+func addLoginHandle(db *sql.DB) {
 	http.HandleFunc("/login", func(w http.ResponseWriter, r *http.Request) {
-		DrawView(w, r, "login")
+		drawView(w, r, "login")
 	})
 	http.HandleFunc("/api/v1/login/form", func(w http.ResponseWriter, r *http.Request) {
 		type ErrorMessageData struct {
@@ -39,8 +40,5 @@ func addLoginHandle() {
 			panic(err)
 		}
 
-	})
-	http.HandleFunc("/api/v1/login/new-acc", func(w http.ResponseWriter, r *http.Request) {
-		DrawView(w, r, "new-acc")
 	})
 }

@@ -26,15 +26,14 @@ html {
 	background-color: var(--color-bg-soft);
 	min-height: 100vh;
 	margin: 0;
+	min-width: max-content;
+	overflow-x: hidden;
 }
 
 header {
 	text-align: center;
 	background-color: var(--color-bg);
 	color: white;
-	padding: 20px;
-}
-header {
 	padding: 20px;
 }
 h1 {
@@ -118,4 +117,28 @@ button:active {
 	The z-index is there because without it the headers shadow would be covered by the next element.
 	*/
 	z-index: 1;
+}
+/* HIT logo at the top of the page. */
+.logo {
+	border-radius: 9px;
+	padding: 7px;
+	transition-duration: 0.5s;
+	background-color: #ffffffff;
+	height: 95px;
+	transition-duration: 0.5s;
+	transition-timing-function: ease-out;
+}
+
+.error-footer {
+	border-color: red;
+	background-color: pink;
+	color:black;
+	margin: auto;
+	margin-bottom: 4px;
+	width: max-content;
+	padding: 10px;
+	border-width: 3px;
+	border-style: solid;
+	display: none;
+	direction: ltr;
 }
