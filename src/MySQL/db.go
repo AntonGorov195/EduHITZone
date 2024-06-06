@@ -59,7 +59,7 @@ func GetCourses(db *sql.DB) []Course {
 	return courses
 }
 func AddCourse(db *sql.DB, name string) {
-	insert, err := db.Query("INSERT INTO courses (course_name) VALUES (?);", name)
+	insert, err := db.Query("INSERT INTO course (name) VALUES (?);", name)
 	if err != nil {
 		fmt.Println("Failed adding course db")
 		panic(err.Error())
