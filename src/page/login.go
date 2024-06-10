@@ -20,15 +20,11 @@ func addLoginHandle(db *sql.DB) {
 		const failed = "<span id=\"error-msg\" style=\"color:red;\">Try again, {{ .Name }}! Your name is not cool</span>"
 
 		name := r.Form.Get("name")
-		if name == "Ofek" || name == "Anton" {
-			tmpl, err := template.New("cool_name").Parse(success)
-			if err != nil {
-				panic(err)
-			}
-			err = tmpl.Execute(w, ErrorMessageData{Name: name})
-			if err != nil {
-				panic(err)
-			}
+		// Change to verify admin, temporary.
+		if name == "admin" {
+			w.Header().Add("HX-Push-Url", "/admin")
+			w.Header().Add("HX-Location", `{"path":"/admin", "target":"#main-container","swap":"innerHTML"}`)
+			drawView(w, r, "admin")
 			return
 		}
 		tmpl, err := template.New("invalid_name").Parse(failed)
