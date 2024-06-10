@@ -9,7 +9,7 @@ const client = new speech.SpeechClient({
 });
 
 const storage = new Storage({
-    keyFilename: 'my-project-423811-ad4a844d02cf.jsonn'
+    keyFilename: 'my-project-423811-ad4a844d02cf.json'
 });
 
 const bucketName = 'my-project-bucket2';
