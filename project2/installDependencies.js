@@ -5,7 +5,9 @@ async function installDependencies() {
         '@google-cloud/speech',
         '@google-cloud/storage',
         'fluent-ffmpeg',
-        'ffmpeg-static'
+        'ffmpeg-static',
+        'openai',
+        'dotenv'
     ];
 
     for (const dep of dependencies) {
