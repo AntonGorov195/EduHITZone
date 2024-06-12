@@ -34,3 +34,12 @@
 .new-acc-enter-btn-container {
 	text-decoration: none;
 }
+.new-acc-col{
+	display: flex;
+	flex-direction: column;
+	padding: 5px;
+}
+.new-acc-row{
+	display: flex;
+	flex-direction: row;
+}
