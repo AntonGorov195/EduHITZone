@@ -1,0 +1,10 @@
+<form class="login-form" hx-target="#error-msg" hx-post="/api/v1/admin/form" hx-swap="outerHTML">
+    <h2>יצירת קורס</h2>
+    <label>שם</label> <input name="course-name">
+    <label>תמונה</label> <input type="url" name="thumbnail">
+    <button>הוסף</button>
+    <span id="error-msg"></span>
+    <script>
+        document.title = "EduHITZone - Admin";
+    </script>
+</form>

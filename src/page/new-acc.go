@@ -5,6 +5,7 @@ import (
 	"database/sql"
 	"html/template"
 	"net/http"
+	"strconv"
 )
 
 func addNewAccountHandle(db *sql.DB) {
@@ -29,7 +30,11 @@ func addNewAccountHandle(db *sql.DB) {
 		if err != nil {
 			panic(err)
 		}
-		hitdb.AddStudent(db, r.Form.Get("name"), r.Form.Get("name"), r.Form.Get("email"), 1, "1920-3-3")
+		academic_year, err := strconv.Atoi(r.Form.Get("academic-year"))
+		if err != nil {
+			panic(err)
+		}
+		hitdb.AddStudent(db, r.Form.Get("first-name"), r.Form.Get("family-name"), r.Form.Get("email"), academic_year, r.Form.Get("birthdate"))
 
 	})
 

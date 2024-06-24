@@ -1,6 +1,7 @@
 package spa
 
 import (
+	hitdb "EduHITZone/src/MySQL"
 	"bytes"
 	"database/sql"
 	"html/template"
@@ -9,8 +10,7 @@ import (
 
 func addContentHandle(db *sql.DB) {
 	http.HandleFunc("/content", func(w http.ResponseWriter, r *http.Request) {
-		// hitdb.GetCourses(db)
-		courses_names := []string{"This code is", "loaded dynamically"}
+		courses := hitdb.GetCourses(db)
 
 		var buf bytes.Buffer
 		tmpl, err := template.ParseFiles("public/static/views/content.html")
@@ -18,7 +18,7 @@ func addContentHandle(db *sql.DB) {
 			http.Error(w, err.Error(), 500)
 			return
 		}
-		if err := tmpl.ExecuteTemplate(&buf, "primary", courses_names); err != nil {
+		if err := tmpl.ExecuteTemplate(&buf, "primary", courses); err != nil {
 			http.Error(w, err.Error(), 500)
 			return
 		}

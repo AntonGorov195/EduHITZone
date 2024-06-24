@@ -8,9 +8,6 @@
         {{ end }}
     </ul>
 </div>
-<div class="content-submit-course-container">
-    <a class="content-submit-course" hx-get="/submit-course" hx-push-url="true" hx-target="#main-container" hx-swap="innerHTML">Create New Course</a>
-</div>
 {{ end }}
 
 {{ block "a" . }}
@@ -20,7 +17,7 @@
         <img class="content-course-preview-image"
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/C_Programming_Language.svg/380px-C_Programming_Language.svg.png?20201031132917">
         <div>
-           {{ . }}
+           {{ .Name }}
         </div>
     </a>
 </li>
