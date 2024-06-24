@@ -1,6 +1,7 @@
 package spa
 
 import (
+	hitdb "EduHITZone/src/MySQL"
 	"database/sql"
 	"html/template"
 	"net/http"
@@ -26,6 +27,7 @@ func addCourseSubmitionHandle(db *sql.DB) {
 		if err != nil {
 			panic(err)
 		}
+		hitdb.AddCourse(db, r.Form.Get("name"))
 
 	})
 }
