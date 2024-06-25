@@ -142,3 +142,44 @@ button:active {
 	display: none;
 	direction: ltr;
 }
+.accessablility {
+	position: -webkit-sticky;
+	position: absolute;
+	top: 5px;
+	text-align: start;
+	z-index: 100;
+	padding: 9px;
+	margin: 6px;
+	background-color: var(--color-bg-soft);
+	width: max-content;
+	border-radius: 3px;
+}
+.accessablility-font-size-btn {
+	padding: 5px;
+	color:white;
+	margin: 3px;
+	min-width: 25px;
+	background-color: var(--color-bg);
+	transition-duration: 0.2s;
+}
+
+.accessablility-font-size-btn:active {
+	background-color: var(--color-bg-soft);
+	color:black;
+}
+.accessablility-collapse-btn {
+	padding: 3px;
+	background-color: var(--color-bg);
+	color:white;
+	transition-duration: 0.2s;
+}
+.accessablility-collapse-btn:active {
+	background-color: var(--color-bg-soft);
+	color:black;
+}
+.accessablility-tab{
+	display: none;
+}
+.accessablility-active{
+	display: block;
+}

@@ -26,27 +26,33 @@
             EduHITZone
         </h1>
     </header>
+    <div class="accessablility drop-box-shadow">
+        <button id="accessablility-collapse-btn" class="accessablility-collapse-btn">Accessability</button>
+        <div id="accessablility-tab" class="accessablility-tab">
+            <div>
+                <label>Font Size</label><button class="accessablility-font-size-btn">+</button><button
+                    class="accessablility-font-size-btn">-</button>
+            </div>
+            <div>
+                <label>Dark Mode</label><input class="accessablility-check-box" type="checkbox">
+            </div>
+        </div>
+        <script>
+            {
+                const collapseBtn=document.getElementById("accessablility-collapse-btn");
+                collapseBtn.addEventListener("click", () => {
+                    const accessablility = document.getElementById("accessablility-tab");
+                    accessablility.classList.toggle("accessablility-active");
+                });
+            }
+        </script>
+    </div>
     <main id="main-container">
         {{ . }}
     </main>
     <footer>
-        <div id="err-footer" class="error-footer"></div>
-        <div>
-
-            <div>
-                <button>
-                    Accessablility
-                </button>
-                <div>
-                    <span>Font size:</span>
-                    <input>
-                </div>
-            </div>
-
-            <span> © כל הזכויות שמורות ל HIT מכון טכנולוגי
-                חולון</span><span style="margin-right:50px;"> בניית אתרים AO</span>
-        </div>
-        <script src="static/js/error-footer.js"></script>
+        <div><span> © כל הזכויות שמורות ל HIT מכון טכנולוגי
+                חולון</span><span style="margin-right:50px;"> בניית אתרים AO</span></div>
     </footer>
 </body>
 
