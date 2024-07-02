@@ -1,22 +1,28 @@
-const { OpenAIApi } = require("openai");
-require('dotenv').config();
+// const { OpenAIApi } = require('openai');
+// require('dotenv').config();
 
-const openai = new OpenAIApi({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+// const openai = new OpenAIApi({
+//   apiKey: process.env.OPENAI_API_KEY,
+// });
 
-async function runTest() {
-  try {
-    const response = await openai.createCompletion({
-      model: "text-davinci-003",
-      prompt: "Say this is a test",
-      max_tokens: 5,
-    });
-    console.log(response.data.choices[0].text);
-  } catch (error) {
-    console.error('Error with OpenAI API:', error);
-  }
-}
+// async function testAPI() {
+//     try {
+//         const response = await openai.createChatCompletion({
+//             model: 'gpt-3.5-turbo',
+//             messages: [
+//                 { role: 'system', content: 'You are a helpful assistant.' },
+//                 { role: 'user', content: 'Say hello!' }
+//             ],
+//             max_tokens: 10,
+//         });
+//         console.log(response.data.choices[0].message.content.trim());
+//     } catch (error) {
+//         console.error('Error with OpenAI API:', error);
+//     }
+// }
 
-runTest();
+// testAPI();
+
+
+// runTest();
 

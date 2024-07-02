@@ -6,7 +6,8 @@ async function installDependencies() {
         '@google-cloud/storage',
         'fluent-ffmpeg',
         'ffmpeg-static',
-        'openai',
+        //'openai@^4.0.0',
+        '@copilot/studio-sdk',
         'dotenv'
     ];
 

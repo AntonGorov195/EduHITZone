@@ -5,7 +5,7 @@ const uploadVideo = require('./uploadVideo');
 const convertToAudio = require('./convertToAudio');
 const convertAudioToMono = require('./convertAudioToMono');
 const transcribeAudio = require('./transcribeAudio');
-// const generateSummaryAndQuiz = require('./generateSummaryAndQuiz')
+const generateSummaryAndQuiz = require('./generateSummaryAndQuiz')
 
 async function main() {
     try {
@@ -27,8 +27,8 @@ async function main() {
         // fs.writeFileSync(combinedTranscriptionPath, transcription, 'utf8');
         // console.log(`Combined transcription saved to: ${combinedTranscriptionPath}`);
 
-        // await generateSummaryAndQuiz(transcription);
-        // console.log(`Summary and quiz generated successfuly.`);
+        await generateSummaryAndQuiz(transcription);
+        console.log(`Summary and quiz generated successfuly.`);
 
     } catch (error) {
         console.error('Error during processing:', error);
