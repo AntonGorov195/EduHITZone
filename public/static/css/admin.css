@@ -1,0 +1,9 @@
+.ns-admin .form {
+	background-color: var(--color-bg);
+	color: white;
+	display: flex;
+	margin: auto;
+	flex-direction: column;
+	padding: 30px;
+	width: max-content;
+}

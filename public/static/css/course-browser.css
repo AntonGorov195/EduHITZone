@@ -1,5 +1,8 @@
+.ns-course-browser{
 
-.content-course-list {
+}
+
+/* .content-course-list {
 	list-style: none;
 	display: flex;
 	overflow: auto;
@@ -39,4 +42,4 @@
 	background-color: var(--color-bg);
 	padding:10px;
 	border-radius: 20px;
-}
+} */

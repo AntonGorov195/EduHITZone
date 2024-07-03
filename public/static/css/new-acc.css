@@ -1,4 +1,5 @@
-.new-acc-form {
+
+.ns-new-acc .form {
 	background-color: var(--color-bg);
 	color: white;
 	display: flex;
@@ -6,12 +7,11 @@
 	flex-direction: column;
 	padding: 30px;
 }
-.new-acc-label {
+.ns-new-acc .label {
 	padding: 3px;
 	text-decoration: underline;
 }
-.new-acc-enter-btn,
-.new-acc-new-btn {
+.ns-new-acc .enter-btn {
 	margin-top: 50px;
 	padding: 2px;
 	padding-left: 30px;
@@ -20,26 +20,22 @@
 	transition-duration: 0.2s;
 	width: fit-content;
 }
-.new-acc-enter-btn:hover {
+.ns-new-acc .enter-btn:hover {
 	padding: 5px;
 	padding-left: 40px;
 	padding-right: 40px;
 }
-.new-acc-new-btn:hover {
-	padding: 3px;
-	padding-left: 35px;
-	padding-right: 35px;
-}
 
 .new-acc-enter-btn-container {
 	text-decoration: none;
+    cursor: pointer;
 }
-.new-acc-col{
+.ns-new-acc .col{
 	display: flex;
 	flex-direction: column;
 	padding: 5px;
 }
-.new-acc-row{
+.ns-new-acc .row{
 	display: flex;
 	flex-direction: row;
 }
