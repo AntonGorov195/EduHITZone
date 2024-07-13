@@ -1,0 +1,20 @@
+{{ define "course-list" }}
+<ul class="ns-course-list">
+    {{ range . }}
+    {{ template "course-item" . }}
+    {{ end }}
+</ul>
+{{ end }}
+
+{{ define "course-item" }}
+<li class="course-display drop-box-shadow">
+    <a class="content-link"
+        href="{{ .Href.String }}">
+        <img class="course-preview-image"
+            src="{{ .Thumbnail.String }}">
+        <div>
+           {{ .Name }}
+        </div>
+    </a>
+</li>
+{{ end }}

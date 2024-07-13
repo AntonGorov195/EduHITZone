@@ -1,4 +1,4 @@
-.login-form {
+.ns-login .form {
 	background-color: var(--color-bg);
 	color: white;
 	display: flex;
@@ -6,12 +6,13 @@
 	flex-direction: column;
 	padding: 30px;
 }
-.login-label {
+
+.ns-login .label {
 	padding: 3px;
 	text-decoration: underline;
 }
-.login-enter-btn,
-.login-new-btn {
+.ns-login .enter-btn,
+.ns-login .new-acc-btn {
 	margin-top: 50px;
 	padding: 2px;
 	padding-left: 30px;
@@ -20,17 +21,17 @@
 	transition-duration: 0.2s;
 	width: fit-content;
 }
-.login-enter-btn:hover {
+.ns-login .enter-btn:hover {
 	padding: 5px;
 	padding-left: 40px;
 	padding-right: 40px;
 }
-.login-new-btn:hover {
+.ns-login .new-btn:hover {
 	padding: 3px;
 	padding-left: 35px;
 	padding-right: 35px;
 }
 
-.login-enter-btn-container {
+.ns-login .enter-btn-container {
 	text-decoration: none;
 }

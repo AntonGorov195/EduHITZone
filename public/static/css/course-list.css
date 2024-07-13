@@ -1,0 +1,22 @@
+.ns-course-list {
+	list-style: none;
+	overflow: auto;
+	justify-content: start;
+	width: 100vw;
+	padding-left: 30px;
+    display: flex;
+}
+.ns-course-list .course-display {
+    display:inline-block;
+	margin: 20px;
+	padding: 30px;
+	transition-duration: 0.4s;
+	background-color: var(--color-bg);
+}
+.ns-course-list .course-display:hover {
+	margin: 30px;
+	scale: 110%;
+}
+.ns-course-list .course-preview-image {
+	max-height: 200px;
+}

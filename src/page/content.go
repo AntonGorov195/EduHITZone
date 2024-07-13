@@ -13,12 +13,12 @@ func addContentHandle(db *sql.DB) {
 		courses := hitdb.GetCourses(db)
 
 		var buf bytes.Buffer
-		tmpl, err := template.ParseFiles("public/static/views/content.html")
+		tmpl, err := template.ParseFiles("public/static/views/content.html", "public/static/views/course-list.html")
 		if err != nil {
 			http.Error(w, err.Error(), 500)
 			return
 		}
-		if err := tmpl.ExecuteTemplate(&buf, "primary", courses); err != nil {
+		if err := tmpl.Execute(&buf, courses); err != nil {
 			http.Error(w, err.Error(), 500)
 			return
 		}

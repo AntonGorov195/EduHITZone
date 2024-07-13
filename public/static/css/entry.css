@@ -1,7 +1,3 @@
-/* 
-	Plays an animation of the buttons fading in and sliding down.
-	Used for testing, feel free to remove.
-*/
 @keyframes btnContainerLoadAnim {
 	0% {
 		opacity: 0;
@@ -12,7 +8,7 @@
 		transform: translateY(0);
 	}
 }
-.entry-btn-container {
+.ns-entry .menu {
 	background-color: var(--color-bg-low-alpha);
 	display: flex;
 	justify-content: center;
@@ -21,4 +17,18 @@
 	animation: 0.5s ease-out 0s btnContainerLoadAnim;
 	padding: 6px;
 	border-radius: 3px;
+}
+.ns-entry .btn {
+	width: fit-content;
+	text-align: center;
+	margin: 10px;
+	transition-duration: 0.4s;
+	background-color: var(--color-bg);
+	padding: 10px;
+	font-size: large;
+}
+.ns-entry .btn:hover {
+	margin: 15px;
+	scale: 110%;
+	font-size: larger;
 }
