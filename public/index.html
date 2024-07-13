@@ -8,9 +8,12 @@
     <link rel='stylesheet' type='text/css' media='screen' href='/static/css/common.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/static/css/entry.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/static/css/login.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='/static/css/content.css'>
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href='/static/css/content.css'> -->
+    <link rel='stylesheet' type='text/css' media='screen' href='/static/css/course-list.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/static/css/error.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/static/css/new-acc.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/static/css/admin.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/static/css/accessablility.css'>
     <title> EduHITZone </title>
     <script src="https://unpkg.com/htmx.org@1.9.12"></script>
     <!-- <script src="https://www.google.com/recaptcha/api.js"></script>
@@ -26,23 +29,23 @@
             EduHITZone
         </h1>
     </header>
-    <div class="accessablility drop-box-shadow">
-        <button id="accessablility-collapse-btn" class="accessablility-collapse-btn">Accessability</button>
-        <div id="accessablility-tab" class="accessablility-tab">
+    <div class="ns-accessablility drop-box-shadow">
+        <button id="collapse-btn" class="collapse-btn">Accessability</button>
+        <div id="accessablility-tab" class="content">
             <div>
-                <label>Font Size</label><button class="accessablility-font-size-btn">+</button><button
-                    class="accessablility-font-size-btn">-</button>
+                <label>Font Size</label><button class="font-size-btn">+</button><button
+                    class="font-size-btn">-</button>
             </div>
             <div>
-                <label>Dark Mode</label><input class="accessablility-check-box" type="checkbox">
+                <label>Dark Mode</label><input class="check-box" type="checkbox">
             </div>
         </div>
         <script>
             {
-                const collapseBtn=document.getElementById("accessablility-collapse-btn");
+                const collapseBtn=document.getElementById("collapse-btn");
                 collapseBtn.addEventListener("click", () => {
                     const accessablility = document.getElementById("accessablility-tab");
-                    accessablility.classList.toggle("accessablility-active");
+                    accessablility.classList.toggle("active");
                 });
             }
         </script>
