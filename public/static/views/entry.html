@@ -1,15 +1,16 @@
+{{ block "entry" . }}
 <div class="ns-entry">
     <nav id="entry-view" class="menu">
         <div class="btn drop-box-shadow">
-            <a href="login" hx-boost="true" hx-target="#main-container" hx-push-url="true" hx-swap="innerHTML"
-                hx-get="login">כניסה</a>
+            <a href="login-page" hx-boost="true" hx-target="#main-container" hx-push-url="true"
+                hx-swap="innerHTML">כניסה</a>
         </div>
         <div class="btn drop-box-shadow">
-            <a href="content" hx-boost="true" hx-target="#main-container" hx-push-url="true" hx-swap="innerHTML"
-                hx-get="content?user=guest">כניסה בתור אורח</a>
+            <a href="search-course?user=guest" hx-boost="true" hx-target="#main-container" hx-push-url="true" hx-swap="innerHTML">כניסה בתור אורח</a>
         </div>
         <div class="btn drop-box-shadow">
             <a href="new-acc">יצירת משתמש</a>
         </div>
     </nav>
 </div>
+{{ end }}

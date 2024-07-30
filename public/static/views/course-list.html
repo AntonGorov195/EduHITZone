@@ -1,4 +1,11 @@
-{{ define "course-list" }}
+<!-- {{ block "course-page" . }}
+<div class="content-course-group-container" id="course-group-container">
+    <h2>קורסים פופולרים</h2>
+    {{ template "course-list" . }}    
+</div>
+{{ end }} -->
+
+{{ block "course-list" . }}
 <ul class="ns-course-list">
     {{ range . }}
     {{ template "course-item" . }}
@@ -6,12 +13,11 @@
 </ul>
 {{ end }}
 
-{{ define "course-item" }}
+{{ block "course-item" . }}
 <li class="course-display drop-box-shadow">
-    <a class="content-link"
-        href="{{ .Href.String }}">
+    <a class="content-link" href="{{ .Href }}?name={{ .Name }}">
         <img class="course-preview-image"
-            src="{{ .Thumbnail.String }}">
+            src="{{ .Thumbnail }}">
         <div>
            {{ .Name }}
         </div>

@@ -1,3 +1,4 @@
+{{ block "index" . }}
 <!DOCTYPE html lang="he">
 <html>
 
@@ -22,14 +23,9 @@
 
 <body>
     <header class="drop-box-shadow">
-        <a href="https://www.hit.ac.il">
-            <img class="logo" src="https://www.hit.ac.il/sites/projects/hit/views/he/images/hit_logo.svg">
-        </a>
-        <h1>
-            EduHITZone
-        </h1>
+        {{ .Header }}
     </header>
-    <div class="ns-accessablility drop-box-shadow">
+    <!-- <div class="ns-accessablility drop-box-shadow">
         <button id="collapse-btn" class="collapse-btn">Accessability</button>
         <div id="accessablility-tab" class="content">
             <div>
@@ -49,14 +45,14 @@
                 });
             }
         </script>
-    </div>
+    </div> -->
     <main id="main-container">
-        {{ . }}
+        {{ .Main }}
     </main>
     <footer>
-        <div><span> © כל הזכויות שמורות ל HIT מכון טכנולוגי
-                חולון</span><span style="margin-right:50px;"> בניית אתרים AO</span></div>
+        {{ .Footer }}
     </footer>
 </body>
 
 </html>
+{{ end }}

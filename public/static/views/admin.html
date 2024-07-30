@@ -1,14 +1,31 @@
+{{ block "admin" . }}
 <div class="ns-admin">
-    <form class="form" hx-target="#error-msg" hx-post="/api/v1/admin/form" hx-swap="outerHTML">
-        <h2>יצירת קורס</h2>
-        <label>שם</label> <input name="course-name">
-        <label>סרטון</label> <input type="url" name="video">
-        <label>תמונה</label> <input type="url" name="thumbnail">
-        <button>הוסף</button>
-        <span id="error-msg"></span>
-        <script>
-            document.title = "EduHITZone - Admin";
-        </script>
-    </form>
-    {{ template "course-list" . }}
+    {{ template "admin-form" .FormData }}
+
+    <!-- <div id="corse-list-container">
+
+    </div> -->
+    {{ template "course-list" .Courses }}
 </div>
+{{ end }}
+
+{{ block "admin-form" . }}
+<form class="form" hx-target="#main-container" hx-post="/admin/course">
+    <h2>יצירת קורס</h2>
+    <label>שם</label>
+    <input {{ if .Values.CourseName }} value="{{ .Values.CourseName }}" {{ end }} name="course-name">
+    <label>סרטון</label> <input type="url" name="video">
+    <label>תמונה</label> <input type="url" name="thumbnail">
+    <button>הוסף</button>
+
+    {{ if .Values.CourseAdded }}
+    <span style="color: green;">{{ .Values.CourseAdded }}</span>
+    {{ end }}
+    {{ if .Errors.FailedRegistering }}
+    <span style="color: red;">{{ .Errors.FailedRegistering }}</span>
+    {{ end }}
+    <script>
+        document.title = "EduHITZone - Admin";
+    </script>
+</form>
+{{ end }}
