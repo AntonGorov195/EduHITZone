@@ -1,6 +1,6 @@
-{{ block "new-acc" . }}
+
 <div class="ns-new-acc">
-    <form class="form" hx-target="#error-msg" hx-post="/new-acc" hx-swap="outerHTML">
+    <form class="form" hx-target="#error-msg" hx-post="/api/v1/new-acc/form" hx-swap="outerHTML">
         <div class="row">
             <div class="col">
                 <label class="label">שם פרטי:</label> <input type="text" name="first-name">
@@ -9,7 +9,7 @@
                 <label class="label">סיסמה:</label> <input type="password" name="password">
             </div>
             <div class="col">
-                <label class="label">שם משפחה:</label> <input type="text" name="last-name">
+                <label class="label">שם משפחה:</label> <input type="text" name="family-name">
                 <label class="label">תאריך לידה:</label> <input type="date" name="birthdate">
                 <label class="label">שנת לימדים:</label> <input type="number" name="academic-year">
                 <label class="label">סיסמה שוב:</label> <input type="password" name="password-repeat">
@@ -18,23 +18,9 @@
         <div class="enter-btn-container">
             <button class="enter-btn">צור משתמש</button>
         </div>
-        <span id="error-msg">{{ if .Errors }} {{ end }}</span>
+        <span id="error-msg"></span>
         <script>
             document.title = "EduHITZone - Create Account";
-            document.addEventListener("htmx:beforeSwap", function (evt) {
-                if (evt.detail.xhr.status === 422) {
-                    evt.detail.shouldSwap = true;
-                    evt.detail.isError = false;
-                }
-            })
         </script>
     </form>
 </div>
-{{ end }}
-
-{{ block "new-acc-failed" . }}
-<span id="error-msg" style="display:red"> Error: {{ . }}</span>
-{{ end }}
-{{ block "new-acc-success" . }}
-<span id="error-msg" style="display:red"> Success, Welcome: {{ .FullName }}!</span>
-{{ end }}

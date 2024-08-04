@@ -1,4 +1,4 @@
-
+/* 
 .ns-new-acc .form {
 	background-color: var(--color-bg);
 	color: white;
@@ -29,13 +29,13 @@
 .new-acc-enter-btn-container {
 	text-decoration: none;
     cursor: pointer;
-}
-.ns-new-acc .col{
+} */
+.ns-new-acc .col {
 	display: flex;
 	flex-direction: column;
 	padding: 5px;
 }
-.ns-new-acc .row{
+.ns-new-acc .row {
 	display: flex;
 	flex-direction: row;
-}
+} 

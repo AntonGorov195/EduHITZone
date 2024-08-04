@@ -4,7 +4,7 @@
 	--color-bg-low-alpha: #1f354e7f;
 	--color-bg-soft: #e5f1ff;
 	--color-bg-active:#ffddc1;
-	--color-bg-hover:#c2c6ff;
+	--color-bg-hover:#e4e6ff;
 	--color-text-bright:white;
 	--color-text-dark:black;
 }
@@ -64,10 +64,10 @@ a {
 	text-decoration: none;
 }
 a:hover {
-	color: rgb(194, 198, 255);
+	color: var(--color-bg-hover);
 }
 a:active {
-	color: rgb(255, 221, 193);
+	color: var(--color-bg-active);
 }
 input {
 	background-color: var(--color-bg-soft);
@@ -76,10 +76,13 @@ button {
 	background-color: var(--color-bg-soft);
 }
 input:focus {
-	background-color: rgb(255, 221, 193);
+	background-color: var(--color-bg-active);
+}
+button:hover {
+	background-color: var(--color-bg-hover);
 }
 button:active {
-	background-color: rgb(255, 221, 193);
+	background-color: var(--color-bg-active);
 }
 
 /* Classes */
@@ -145,4 +148,32 @@ button:active {
 	border-style: solid;
 	display: none;
 	direction: ltr;
+}
+
+form button {
+	margin-top: 50px;
+	padding: 2px;
+	padding-left: 30px;
+	padding-right: 30px;
+	background-color: var(--color-bg-soft);
+	transition-duration: 0.2s;
+	width: fit-content;
+}
+form button:hover {
+	padding: 3px;
+	padding-left: 35px;
+	padding-right: 35px;
+}
+
+form label {
+	padding: 3px;
+	text-decoration: underline;
+}
+form {
+	background-color: var(--color-bg);
+	color: white;
+	display: flex;
+	margin: auto;
+	flex-direction: column;
+	padding: 30px;
 }

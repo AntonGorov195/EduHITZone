@@ -1,0 +1,26 @@
+{{ block "login" . }}
+<div class="ns-login">
+    <form class="form" hx-target="main" hx-push-url="/search-course" hx-post="/login" hx-swap="innerHTML">
+        <label class="label">תעודת זהות:</label> <input type="text" name="name" {{ if .Values.Name }}
+            value="{{ .Values.Name }}" {{ end }}>
+        <label class="label">סיסמה:</label> <input type="password" name="password" {{ if .Values.Password }}
+            value="{{ .Values.Password }}" {{ end }}>
+        <div class="enter-btn-container">
+            <button class="enter-btn">כניסה</button>
+            <button class="new-acc-btn" hx-get="/new-acc" hx-push-url="true" hx-swap="innerHTML">משתמש חדש</button>
+        </div>
+        {{ if .Errors.UserNotFound }}
+        <span style="color:red">{{ .Errors.UserNotFound }}</span>
+        {{ end }}
+        <script defer>
+            document.title = "EduHITZone - Login";
+            document.addEventListener("htmx:beforeSwap", function (evt) {
+                if (evt.detail.xhr.status === 422) {
+                    evt.detail.shouldSwap = true;
+                    evt.detail.isError = false;
+                }
+            })
+        </script>
+    </form>
+</div>
+{{ end }}
