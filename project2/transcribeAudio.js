@@ -27,8 +27,10 @@ async function transcribeAudio(audioFilePath) {
         const gcsUri = `gs://${bucketName}/${path.basename(convertedAudioPath)}`;
         const transcription = await transcribeLongAudio(gcsUri);
 
-        const outputFilePath = convertedAudioPath.replace('_converted.wav', '.txt');
+        const outputFilePath = path.join(__dirname, 'combined_transcription.txt');
         fs.writeFileSync(outputFilePath, transcription, 'utf8');
+        console.log(`Transcription saved to: ${outputFilePath}`);
+
         return transcription;
 
     } catch (error) {
