@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.js"></script>
+</head>
+<body>
+    <div id="chat-box"></div>
+    <input type="text" id="message-input" placeholder="Type your message...">
+    <button onclick="sendMessage()">Send</button>
+    <input type="file" id="file-input" accept="image/*">
+    
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            var socket = io.connect('http://' + document.domain + ':' + location.port);
+
+            socket.on('message', function(data) {
+                var chatBox = document.getElementById('chat-box');
+                if (data.image) {
+                    var img = document.createElement('img');
+                    img.src = 'data:image/jpeg;base64,' + data.image;
+                    chatBox.appendChild(img);
+                } else if (data.text) {
+                    var p = document.createElement('p');
+                    p.innerHTML = data.text;
+                    chatBox.appendChild(p);
+                }
+            });
+
+            document.getElementById('file-input').addEventListener('change', function() {
+                var file = this.files[0];
+                var reader = new FileReader();
+                reader.onloadend = function() {
+                    var imageData = reader.result;
+                    socket.emit('message', {'image': imageData});
+                }
+                reader.readAsDataURL(file);
+            });
+        });
+
+        function sendMessage() {
+            var messageInput = document.getElementById('message-input');
+            var message = messageInput.value;
+            var socket = io.connect('http://' + document.domain + ':' + location.port);
+            socket.emit('message', message);
+            messageInput.value = '';
+        }
+    </script>
+</body>
+</html>
