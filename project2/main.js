@@ -12,20 +12,16 @@ async function main() {
         await installDependencies();
 
         const videoPath = await uploadVideo();
-        console.log(`Video uploaded successfully to: ${videoPath}`);
+        //console.log(`Video uploaded successfully to: ${videoPath}`);
 
         const audioPath = await convertToAudio(videoPath);
-        console.log(`Audio conversion completed.`);
+        //console.log(`Audio conversion completed.`);
 
         const monoAudioPath = await convertAudioToMono(audioPath);
-        console.log(`Audio conversion to mono completed.`);
+        //console.log(`Audio conversion to mono completed.`);
 
         const transcription = await transcribeAudio(monoAudioPath);
-        console.log(`Transcription completed: ${transcription}`);
-
-        // const combinedTranscriptionPath = path.join(__dirname, 'combined_transcription.txt');
-        // fs.writeFileSync(combinedTranscriptionPath, transcription, 'utf8');
-        // console.log(`Combined transcription saved to: ${combinedTranscriptionPath}`);
+        //console.log(`Transcription completed: ${transcription}`);
 
         await generateSummaryAndQuiz(transcription);
         console.log(`Summary and quiz generated successfuly.`);

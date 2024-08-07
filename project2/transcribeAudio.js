@@ -16,9 +16,6 @@ const bucketName = 'my-project-bucket2';
 
 async function transcribeAudio(audioFilePath) {
     try {
-        console.log(`Transcribing ${audioFilePath}...`);
-
-        // Convert to WAV with 16000 Hz and mono
         const convertedAudioPath = audioFilePath.replace('.mp3', '_converted.wav');
         await convertToWav(audioFilePath, convertedAudioPath);
 
@@ -29,7 +26,6 @@ async function transcribeAudio(audioFilePath) {
 
         const outputFilePath = path.join(__dirname, 'combined_transcription.txt');
         fs.writeFileSync(outputFilePath, transcription, 'utf8');
-        console.log(`Transcription saved to: ${outputFilePath}`);
 
         return transcription;
 
@@ -48,7 +44,6 @@ async function convertToWav(inputPath, outputPath) {
             ])
             .output(outputPath)
             .on('end', () => {
-                console.log('Wav conversion completed.');
                 resolve(outputPath);
             })
             .on('error', reject)
@@ -60,7 +55,6 @@ async function uploadToBucket(filePath) {
     await storage.bucket(bucketName).upload(filePath, {
         destination: path.basename(filePath),
     });
-    console.log(`${filePath} uploaded to ${bucketName}.`);
 }
 
 async function transcribeLongAudio(gcsUri) {
@@ -75,13 +69,8 @@ async function transcribeLongAudio(gcsUri) {
         },
     };
 
-    console.log('Sending long running recognize request to Google API with URI:', gcsUri);
-    console.log('Request:', request);
-
     const [operation] = await client.longRunningRecognize(request);
-    console.log('Waiting for operation to complete...');
     const [response] = await operation.promise();
-    console.log('Response:', response);
 
     if (!response.results || response.results.length === 0) {
         console.error(`No transcription results for ${gcsUri}`);
@@ -95,3 +84,4 @@ async function transcribeLongAudio(gcsUri) {
 }
 
 module.exports = transcribeAudio;
+

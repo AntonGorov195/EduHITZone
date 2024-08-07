@@ -8,7 +8,7 @@ const openai = new OpenAI({
 
 async function generateSummaryAndQuiz(text) {
     try {
-        // יצירת סיכום
+    
         const summaryResponse = await openai.chat.completions.create({
             model: 'gpt-3.5-turbo',
             messages: [
