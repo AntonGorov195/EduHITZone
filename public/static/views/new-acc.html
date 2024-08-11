@@ -1,20 +1,10 @@
 {{ block "new-acc" . }}
 <div class="ns-new-acc">
     <form class="form" hx-target="#error-msg" hx-post="/new-acc" hx-swap="outerHTML">
-        <div class="row">
-            <div class="col">
-                <label class="label">שם פרטי:</label> <input type="text" name="first-name">
-                <label class="label">מייל:</label> <input type="email" name="email">
-                <label class="label">מספר טלפון:</label> <input type="tel" name="phone-num">
-                <label class="label">סיסמה:</label> <input type="password" name="password">
-            </div>
-            <div class="col">
-                <label class="label">שם משפחה:</label> <input type="text" name="last-name">
-                <label class="label">תאריך לידה:</label> <input type="date" name="birthdate">
-                <label class="label">שנת לימדים:</label> <input type="number" name="academic-year">
-                <label class="label">סיסמה שוב:</label> <input type="password" name="password-repeat">
-            </div>
-        </div>
+        <label class="label">תעודת זהות</label> <input type="number" name="user-id">
+        <label class="label">שם משתמש</label> <input type="text" name="username">
+        <label class="label">סיסמה</label> <input type="password" name="password">
+        <label class="label">שוב סיסמה</label> <input type="password" name="password-confirm">
         <div class="enter-btn-container">
             <button class="enter-btn">צור משתמש</button>
         </div>
@@ -33,8 +23,8 @@
 {{ end }}
 
 {{ block "new-acc-failed" . }}
-<span id="error-msg" style="display:red"> Error: {{ . }}</span>
+<span id="error-msg" style="color:red"> Error: {{ . }}</span>
 {{ end }}
 {{ block "new-acc-success" . }}
-<span id="error-msg" style="display:red"> Success, Welcome: {{ .FullName }}!</span>
+<span id="error-msg" style="color:red"> Success, Welcome: {{ .FullName }}!</span>
 {{ end }}

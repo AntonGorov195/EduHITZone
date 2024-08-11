@@ -3,10 +3,10 @@
 	--color-bg: #1f354e;
 	--color-bg-low-alpha: #1f354e7f;
 	--color-bg-soft: #e5f1ff;
-	--color-bg-active:#ffddc1;
-	--color-bg-hover:#e4e6ff;
-	--color-text-bright:white;
-	--color-text-dark:black;
+	--color-bg-active: #ffddc1;
+	--color-bg-hover: #e4e6ff;
+	--color-text-bright: white;
+	--color-text-dark: black;
 }
 
 /* Shared values */
@@ -139,7 +139,7 @@ button:active {
 .error-footer {
 	border-color: red;
 	background-color: pink;
-	color:black;
+	color: black;
 	margin: auto;
 	margin-bottom: 4px;
 	width: max-content;
@@ -177,3 +177,22 @@ form {
 	flex-direction: column;
 	padding: 30px;
 }
+
+/* 
+	Chrome, Safari, Edge, Opera 
+	Remove arrows from number input field.
+*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+	appearance: textfield;
+}
+input[type="file"] {
+	color:black;
+}
+
