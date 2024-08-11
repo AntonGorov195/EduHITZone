@@ -50,9 +50,12 @@ func TestStudent(t *testing.T) {
 	}
 	t.Log("Current students: ", students)
 	new_student := Student{}
-	new_student.FirstName = "Test"
-	new_student.LastName = "Student"
-	new_student, err = RegisterStudent(db, new_student)
+	new_student.Id = -1
+	new_student.Username = "Test User"
+	new_student.Password = []byte("password")
+	// new_student.FirstName = "Test"
+	// new_student.LastName = "Student"
+	err = RegisterStudent(db, new_student)
 	if err != nil {
 		t.Error(err)
 	}
@@ -62,7 +65,7 @@ func TestStudent(t *testing.T) {
 	}
 	t.Log("After adding a student: ", students)
 
-	new_student.FirstName = "New Test"
+	new_student.Username = "Updated Test User"
 	err = UpdateStudent(db, new_student)
 	if err != nil {
 		t.Error(err)

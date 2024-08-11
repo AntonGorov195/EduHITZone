@@ -3,16 +3,16 @@ package main
 import (
 	"net/http"
 
-	hitdb "EduHITZone/src/MySQL"
+	hitdb "EduHITZone/src/DB"
 	spa "EduHITZone/src/page"
-
-	_ "cloud.google.com/go/recaptchaenterprise/v2/apiv1"
-	_ "cloud.google.com/go/recaptchaenterprise/v2/apiv1/recaptchaenterprisepb"
 )
 
 // Working on a single page app.
 func main() {
-	db := hitdb.ConnectDB()
+	db, err := hitdb.ConnectDB()
+	if err != nil {
+		panic(err)
+	}
 	defer db.Close()
 
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("public/static/"))))
