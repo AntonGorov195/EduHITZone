@@ -8,7 +8,6 @@ import (
 	"html/template"
 	"io"
 	"net/http"
-	"slices"
 	"strconv"
 )
 
@@ -114,10 +113,10 @@ func AddPageHandles(db *sql.DB) {
 			Errors map[string]string
 		}
 		r.ParseForm()
-		name := r.Form.Get("name")
 		// TODO: Implement passwords...
 		password := r.Form.Get("password")
-		if name == "admin" {
+		username := r.Form.Get("username")
+		if username == "admin" {
 			w.Header().Add("HX-Push-Url", "/admin")
 			w.Header().Add("HX-Location", `{"path":"/admin", "target":"#main-container","swap":"innerHTML"}`)
 			data, err := adminDataNew(db)
@@ -130,24 +129,16 @@ func AddPageHandles(db *sql.DB) {
 			}
 			return
 		}
-		students, err := hitdb.GetStudents(db)
+		_, err := hitdb.GetStudentByPasswordAndUsername(db, username, password)
 		if err != nil {
-			w.WriteHeader(502)
-			panic(err)
-		}
-
-		is_exist := slices.ContainsFunc(students, func(student hitdb.Student) bool {
-			return student.FirstName == name
-		})
-
-		if !is_exist {
+			// TODO: better error handling
 			w.Header().Add("HX-Push-Url", "false")
 			w.WriteHeader(422)
 			form_data := LoginData{
 				Values: make(map[string]string),
 				Errors: make(map[string]string),
 			}
-			form_data.Values["Name"] = name
+			form_data.Values["Name"] = username
 			form_data.Values["Password"] = password
 			form_data.Errors["UserNotFound"] = "Failed finding the account. Make sure you've entered the correct data."
 			templates.Render(w, "login", form_data)
@@ -175,24 +166,16 @@ func AddPageHandles(db *sql.DB) {
 			panic(err)
 		}
 	})
-	// TODO: Handle more input field
 	http.HandleFunc("POST /new-acc", func(w http.ResponseWriter, r *http.Request) {
-		student := hitdb.Student{}
-
 		r.ParseForm()
-		academic_year, err := strconv.Atoi(r.Form.Get("academic-year"))
+		password := []byte(r.Form.Get("password"))
+		username := r.Form.Get("username")
+		id, err := strconv.Atoi(r.Form.Get("user-id"))
 		if err != nil {
-			// panic(err)
-			student.AcademicYear = 0
-			fmt.Println("No academic year")
-		} else {
-			student.AcademicYear = academic_year
+			panic(err)
 		}
-		student.FirstName = r.Form.Get("first-name")
-		student.LastName = r.Form.Get("last-name")
-		// TODO: Handle birth dates
-		student.DateOfBirth = sql.NullString{String: r.Form.Get("birthdate"), Valid: true}
-		student, err = hitdb.RegisterStudent(db, student)
+		student := hitdb.Student{Id: int64(id), Username: username, Password: password}
+		err = hitdb.RegisterStudent(db, student)
 		if err != nil {
 			// TODO: Handle student failed registration.
 			w.WriteHeader(422)
@@ -202,7 +185,7 @@ func AddPageHandles(db *sql.DB) {
 		type SuccessData struct {
 			FullName string
 		}
-		templates.Render(w, "new-acc-success", SuccessData{FullName: student.FirstName + " " + student.LastName})
+		templates.Render(w, "new-acc-success", SuccessData{FullName: username})
 		hitdb.RegisterStudent(db, student)
 	})
 
@@ -250,9 +233,16 @@ func AddPageHandles(db *sql.DB) {
 			panic(err)
 		}
 	})
+	http.HandleFunc("GET /admin/course", func(w http.ResponseWriter, r *http.Request) {
+		err := templates.ConditionalRenderDefault(w, r.Header.Get("HX-Request") == "", "course-admin", nil)
+		if err != nil {
+			panic(err)
+		}
+	})
 }
 
 type courseItem struct {
+	Id        int64
 	Name      string
 	Thumbnail string
 	Href      string
@@ -264,6 +254,7 @@ func toCourseItem(courses []hitdb.Course, href string) []courseItem {
 		item := courseItem{}
 		item.Href = href
 		item.Name = course.Name
+		item.Id = course.Id
 		item.Thumbnail = course.Thumbnail
 		items = append(items, item)
 	}
