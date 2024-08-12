@@ -1,34 +1,25 @@
 {{ block "course" . }}
-<div class="ns-course">
-    <video controls id="course-video" src="/static/2024-06-30 19-37-25.mp4" height="480px"></video>
-    <div style="background-color: var(--color-bg);color:white;">
-        INSERT SUMMERY HERE
+<div style="display:flex;flex-direction: column;align-items:center;font-size: large;" class="ns-course">
+    <video controls id="course-video" src="{{.Video}}" height="480px"></video>
+    <div style="width:640px;background-color: var(--color-bg);color:white;padding: 3px;">
+        {{ .Summary }}
     </div>
-    <div>
-        {{ template "chat" . }}
-    </div>
-    <script>
-
-    </script>
 </div>
 {{ end }}
 
-{{ block "chat" . }}
-<div class="ns-chat">
-    <div>
-        {{ template "message" . }}
-    </div>
-    <form>
-        <input type="text" placeholder="message">
-        <input type="file">
-        <img>
-        <button>Send</button>
-    </form>
-</div>
-{{ end }}
-
-{{ block "message" . }}
+{{ block "course-admin" . }}
 <div>
-    Message content
+    <video controls id="course-video" src="{{.Video}}" height="480px"></video>
 </div>
+<label style="margin:2px;background-color: var(--color-bg);color:white;padding:20px;border-radius: 4px;text-decoration: underline;">סיכום</label>
+<div>
+    <textarea name="summary" id="ai-summary" style="padding: 3px;font-size: large;background-color: var(--color-bg);color:white;height:120px;width: 640px;resize:vertical;margin:3px;" form="course-content-form">{{ .Summary }}</textarea>
+    <div class="htmx-indicator" id="load-text">טוען</div>
+</div>
+<form hx-boost="true" hx-swap="innerHTML" hx-target="#ai-summary" hx-get="/admin/course/summary?id={{.CourseId}}" style="margin:1px;text-align: center;" id="course-ai" hx-indicator="#load-text">
+    <button type="submit" style="margin: 1px;"> צור סיכום חדש</button>
+</form>
+<form hx-boost="true" hx-target="#main-container" hx-put="/admin/course?id={{.CourseId}}" style="margin:1px;text-align: center;" id="course-content-form">
+    <button style="margin: 1px; margin-left: auto;margin-right: auto;"> שמור שינויים</button>
+</form>
 {{ end }}

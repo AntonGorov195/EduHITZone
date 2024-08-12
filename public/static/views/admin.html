@@ -10,13 +10,12 @@
 {{ end }}
 
 {{ block "admin-form" . }}
-<form class="form" hx-target="#main-container" hx-post="/admin/course">
+<form class="form" hx-target="#main-container" hx-post="/admin/course" enctype="multipart/form-data">
     <h2>יצירת קורס</h2>
-    <label>שם</label>
-    <input {{ if .Values.CourseName }} value="{{ .Values.CourseName }}" {{ end }} name="course-name">
-    <label>סרטון</label> <input type="url" name="video">
-    <label>תמונה</label> <input type="url" name="thumbnail">
-    <button>הוסף</button>
+    <label>שם</label><input type="text" name="course-name" {{ if .Values.CourseName }} value="{{ .Values.CourseName }}" {{ end }} >
+    <label>סרטון</label> <input type="file" name="video">
+    <label>תמונה</label> <input type="file" name="thumbnail">
+    <button type="submit">הוסף</button>
 
     {{ if .Values.CourseAdded }}
     <span style="color: green;">{{ .Values.CourseAdded }}</span>

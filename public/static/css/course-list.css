@@ -3,7 +3,7 @@
 	overflow: auto;
 	justify-content: start;
 	width: 100vw;
-	padding-left: 30px;
+	padding-right: 50px;
     display: flex;
 }
 .ns-course-list .course-display {

@@ -2,12 +2,16 @@ package spa
 
 import (
 	hitdb "EduHITZone/src/DB"
+	ai "EduHITZone/src/ai"
 	"bytes"
 	"database/sql"
 	"fmt"
 	"html/template"
 	"io"
 	"net/http"
+	"os"
+	"path/filepath"
+	"slices"
 	"strconv"
 )
 
@@ -140,7 +144,7 @@ func AddPageHandles(db *sql.DB) {
 			}
 			form_data.Values["Name"] = username
 			form_data.Values["Password"] = password
-			form_data.Errors["UserNotFound"] = "Failed finding the account. Make sure you've entered the correct data."
+			form_data.Errors["UserNotFound"] = "סיסמה או שם משתמש לא נכון"
 			templates.Render(w, "login", form_data)
 			return
 		}
@@ -153,7 +157,24 @@ func AddPageHandles(db *sql.DB) {
 	})
 	// Course
 	http.HandleFunc("GET /course", func(w http.ResponseWriter, r *http.Request) {
-		err := templates.ConditionalRenderDefault(w, r.Header.Get("HX-Request") == "", "course", nil)
+		id, err := strconv.Atoi(r.URL.Query().Get("id"))
+		if err != nil {
+			panic(err)
+		}
+		courses, err := hitdb.GetCourses(db)
+		if err != nil {
+			panic(err)
+		}
+		course := courses[slices.IndexFunc(courses, func(course hitdb.Course) bool {
+			return course.Id == int64(id)
+		})]
+
+		err = templates.ConditionalRenderDefault(w, r.Header.Get("HX-Request") == "", "course", struct {
+			CourseId int
+			Summary  string
+			Video    string
+		}{CourseId: id, Summary: course.Summery.String, Video: course.VideoLink.String})
+
 		if err != nil {
 			panic(err)
 		}
@@ -172,6 +193,8 @@ func AddPageHandles(db *sql.DB) {
 		username := r.Form.Get("username")
 		id, err := strconv.Atoi(r.Form.Get("user-id"))
 		if err != nil {
+			w.Header().Add("HX-Push-Url", "false")
+			w.Header().Add("HX-Location", `{"path":"/admin", "target":"#error-msg","swap":"innerHTML"}`)
 			panic(err)
 		}
 		student := hitdb.Student{Id: int64(id), Username: username, Password: password}
@@ -180,13 +203,9 @@ func AddPageHandles(db *sql.DB) {
 			// TODO: Handle student failed registration.
 			w.WriteHeader(422)
 			templates.Render(w, "new-acc-failed", "Failed registering a new student")
-			return
+			panic(err)
 		}
-		type SuccessData struct {
-			FullName string
-		}
-		templates.Render(w, "new-acc-success", SuccessData{FullName: username})
-		hitdb.RegisterStudent(db, student)
+		loadSearchCourses(w, r, templates, db)
 	})
 
 	// Admin
@@ -201,14 +220,69 @@ func AddPageHandles(db *sql.DB) {
 		}
 	})
 	http.HandleFunc("POST /admin/course", func(w http.ResponseWriter, r *http.Request) {
-		r.ParseForm()
-		r.URL.Query().Get("name")
-		name := r.Form.Get("course-name")
-		thumbnail := r.Form.Get("thumbnail")
 		course := hitdb.Course{}
+		err := r.ParseMultipartForm(99999999999999999)
+		if err != nil {
+			panic(err)
+		}
+		name := r.Form.Get("course-name")
 		course.Name = name
-		course.Thumbnail = thumbnail
-		course, err := hitdb.RegisterCourse(db, course)
+		fmt.Println(name)
+		{
+			file, _, err := r.FormFile("thumbnail")
+			if err != nil {
+				panic(err)
+			}
+			defer file.Close()
+
+			// Create the uploads directory if it doesn't exist
+			uploadDir := "public/static/thumbnails/"
+			if _, err := os.Stat(uploadDir); os.IsNotExist(err) {
+				os.Mkdir(uploadDir, 0755)
+			}
+
+			// Save the uploaded file to the server
+			filePath := filepath.Join(uploadDir, name)
+			out, err := os.Create(filePath)
+			if err != nil {
+				panic(err)
+			}
+			defer out.Close()
+			_, err = io.Copy(out, file)
+			if err != nil {
+				panic(err)
+			}
+			course.Thumbnail = "/static/thumbnails/" + name
+		}
+		{
+			file, _, err := r.FormFile("video")
+			if err != nil {
+				fmt.Println(err)
+				return
+			}
+			defer file.Close()
+
+			// Create the uploads directory if it doesn't exist
+			uploadDir := "public/static/videos/"
+			if _, err := os.Stat(uploadDir); os.IsNotExist(err) {
+				os.Mkdir(uploadDir, 0755)
+			}
+
+			// Save the uploaded file to the server
+			filePath := filepath.Join(uploadDir, name)
+			out, err := os.Create(filePath)
+			if err != nil {
+				panic(err)
+			}
+			defer out.Close()
+			_, err = io.Copy(out, file)
+			if err != nil {
+				panic(err)
+			}
+			course.VideoLink.String = "/static/videos/" + name
+			course.VideoLink.Valid = true
+		}
+		course, err = hitdb.RegisterCourse(db, course)
 		if err != nil {
 			data, err := adminDataNew(db)
 			if err != nil {
@@ -234,11 +308,82 @@ func AddPageHandles(db *sql.DB) {
 		}
 	})
 	http.HandleFunc("GET /admin/course", func(w http.ResponseWriter, r *http.Request) {
-		err := templates.ConditionalRenderDefault(w, r.Header.Get("HX-Request") == "", "course-admin", nil)
+		id, err := strconv.Atoi(r.URL.Query().Get("id"))
+		if err != nil {
+			panic(err)
+		}
+		courses, err := hitdb.GetCourses(db)
+		if err != nil {
+			panic(err)
+		}
+		course := courses[slices.IndexFunc(courses, func(course hitdb.Course) bool {
+			return course.Id == int64(id)
+		})]
+
+		err = templates.ConditionalRenderDefault(w, r.Header.Get("HX-Request") == "", "course-admin", struct {
+			CourseId int
+			Summary  string
+			Video    string
+		}{CourseId: id, Summary: course.Summery.String, Video: course.VideoLink.String})
+
 		if err != nil {
 			panic(err)
 		}
 	})
+	http.HandleFunc("PUT /admin/course", func(w http.ResponseWriter, r *http.Request) {
+		id, err := strconv.Atoi(r.URL.Query().Get("id"))
+		if err != nil {
+			panic(err)
+		}
+		err = r.ParseForm()
+		if err != nil {
+			panic(err)
+		}
+		courses, err := hitdb.GetCourses(db)
+		if err != nil {
+			panic(err)
+		}
+		course := courses[slices.IndexFunc(courses, func(course hitdb.Course) bool {
+			return course.Id == int64(id)
+		})]
+		course.Summery = sql.NullString{String: r.Form.Get("summary"), Valid: true}
+		err = hitdb.UpdateCourse(db, course)
+
+		if err != nil {
+			panic(err)
+		}
+		err = templates.ConditionalRenderDefault(w, r.Header.Get("HX-Request") == "", "course-admin", struct {
+			CourseId int
+			Summary  string
+			Video    string
+		}{CourseId: id, Summary: course.Summery.String, Video: course.VideoLink.String})
+
+		if err != nil {
+			panic(err)
+		}
+	})
+	http.HandleFunc("GET /admin/course/summary", func(w http.ResponseWriter, r *http.Request) {
+		id, err := strconv.Atoi(r.URL.Query().Get("id"))
+		if err != nil {
+			panic(err)
+		}
+		courses, err := hitdb.GetCourses(db)
+		if err != nil {
+			panic(err)
+		}
+		course := courses[slices.IndexFunc(courses, func(course hitdb.Course) bool {
+			return course.Id == int64(id)
+		})]
+		summary, _, err := ai.GenerateAIContent("public" + course.VideoLink.String)
+		if err != nil {
+			panic(err)
+		}
+
+		course.Summery = sql.NullString{String: summary, Valid: true}
+		hitdb.UpdateCourse(db, course)
+		io.WriteString(w, summary)
+	})
+	addChatPage(templates, db)
 }
 
 type courseItem struct {

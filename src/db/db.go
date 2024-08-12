@@ -78,17 +78,21 @@ func RegisterCourse(db *sql.DB, course Course) (Course, error) {
 	course.Id = id
 	return course, nil
 }
-func GetCourseById(db *sql.DB, id int) bool {
-	row, err := db.Query("SELECT name FROM courses WHERE students.id = ?;", id)
-	if err != nil {
-		// This shouldn't ever happend.
-		panic(err)
-	}
-	if row.Next() {
-		return true
-	}
-	return false
-}
+
+// TODO:
+//
+//	func GetCourseById(db *sql.DB, id int) bool {
+//		row, err := db.Query("SELECT name FROM courses WHERE students.id = ?;", id)
+//		if err != nil {
+//			// This shouldn't ever happend.
+//			panic(err)
+//		}
+//		if row.Next() {
+//			return true
+//		}
+//		return false
+//	}
+
 func UpdateCourse(db *sql.DB, course Course) error {
 	_, err := db.Exec("UPDATE courses SET name = ?, thumbnail = ?, vid_link = ?, summery = ?, raw_translation = ?  WHERE id = ?;",
 		course.Name, course.Thumbnail, course.VideoLink, course.Summery, course.RawTranslation, course.Id)
@@ -173,3 +177,7 @@ func DeleteStudent(db *sql.DB, student Student) error {
 	_, err := db.Exec("DELETE FROM students WHERE id = ?;", student.Id)
 	return err
 }
+
+/*
+
+*/

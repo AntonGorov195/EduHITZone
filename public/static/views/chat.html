@@ -1,0 +1,19 @@
+{{ block "chat" . }}
+<div id="chat" class="ns-chat" style="margin:10px;">
+    <ul>
+        {{ range . }}
+        {{ template "chat-message" . }}
+        {{ end }}
+    </ul>
+    <form hx-post="chat" hx-target="#chat">
+        <input name="message" type="text" placeholder="message">
+        <button>Send</button>
+    </form>
+</div>
+{{ end }}
+
+{{ block "chat-message" . }}
+<li style="border-style: solid;padding: 4px;margin:3px;">
+    <span>{{ .Message }}</span>
+</li>
+{{ end }}

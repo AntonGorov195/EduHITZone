@@ -1,6 +1,6 @@
 {{ block "new-acc" . }}
 <div class="ns-new-acc">
-    <form class="form" hx-target="#error-msg" hx-post="/new-acc" hx-swap="outerHTML">
+    <form class="form" hx-target="#main-container" hx-post="/new-acc" hx-push-url="/search-course">
         <label class="label">תעודת זהות</label> <input type="number" name="user-id">
         <label class="label">שם משתמש</label> <input type="text" name="username">
         <label class="label">סיסמה</label> <input type="password" name="password">
