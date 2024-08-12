@@ -3,13 +3,12 @@ package eduhitdb
 import (
 	"database/sql"
 	"errors"
-	"os"
 
 	_ "github.com/go-sql-driver/mysql"
 )
 
 // Change this to your mysql password.
-var password string = os.Getenv("MYSQL_PASSWORD")
+var password string = "ofekbiton1234" //os.Getenv("MYSQL_PASSWORD")
 
 func ConnectDB() (*sql.DB, error) {
 	// password := os.Getenv("MYSQL_PASSWORD")
